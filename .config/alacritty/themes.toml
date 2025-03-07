@@ -1,0 +1,156 @@
+#DRACULA+MONOKAI
+# Default colors
+[colors.primary]
+foreground = '#f8f8f2'
+background = '#25292f'
+# this theme is mixing of colors the monokai+dracula.
+[colors.normal]
+black = "#272822"
+red = "#f92672"
+green = '#50fa7b' #dracula
+#green = "#a6e22e"
+yellow = "#f4bf75"
+blue = "#66d9ef"
+magenta = "#ae81ff"
+cyan = "#a1efe4"
+white = "#f8f8f2"
+
+[colors.bright]
+black = "#75715e"
+red = "#f92672"
+green = '#50fa7b' #dracula
+#green = "#a6e22e"
+yellow = "#f4bf75"
+blue = "#66d9ef"
+magenta = "#ae81ff"
+cyan = "#a1efe4"
+white = "#f9f8f5"
+--------------------------------------------------------------------------------
+#colors (dracula)
+
+# default colors
+[colors.primary]
+background = '#282a36'
+foreground = '#f8f8f2'
+
+# normal colors
+[colors.normal]
+black   = '#000000'
+red     = '#ff5555'
+green   = '#50fa7b'
+yellow  = '#f1fa8c'
+blue    = '#bd93f9'
+magenta = '#ff79c6'
+cyan    = '#8be9fd'
+white   = '#bbbbbb'
+
+# bright colors
+[colors.bright]
+black   = '#555555'
+red     = '#ff5555'
+green   = '#50fa7b'
+yellow  = '#f1fa8c'
+blue    = '#caa9fa'
+magenta = '#ff79c6'
+cyan    = '#8be9fd'
+white   = '#ffffff'
+
+
+
+
+--------------------------------------------------------------------------------
+#PERSONALIZADO
+
+[colors.bright]
+black = "0x505050"
+blue = "0xb0b0b0"
+cyan = "0x8f5536"
+green = "0x202020"
+magenta = "0xe0e0e0"
+red = "0xd28445"
+white = "0xf5f5f5"
+yellow = "0x303030"
+
+[colors.cursor]
+cursor = "0xd0d0d0"
+text = "0x151515"
+
+[colors.normal]
+black = "0x151515"
+blue = "0x6a9fb5"
+cyan = "0x75b5aa"
+green = "0x90a959"
+magenta = "0xaa759f"
+red = "0xac4142"
+white = "0xd0d0d0"
+yellow = "0xf4bf75"
+
+[colors.primary]
+background = "0x151515"
+foreground = "0xd0d0d0"
+
+
+
+--------------------------------------------------------------------------------
+##SONOKAI THEME
+[colors.bright]
+black = "0x7f8490"
+blue = "0x76cce0"
+cyan = "0xf39660"
+green = "0x9ed072"
+magenta = "0xb39df3"
+red = "0xfc5d7c"
+white = "0xe2e2e3"
+yellow = "0xe7c664"
+
+[colors.cursor]
+cursor = "0xd0d0d0"
+text = "0x151515"
+
+[colors.normal]
+black = "0x181819"
+blue = "0x76cce0"
+cyan = "0xf39660"
+green = "0x9ed072"
+magenta = "0xb39df3"
+red = "0xfc5d7c"
+white = "0xe2e2e3"
+yellow = "0xe7c664"
+
+
+[colors.primary]
+background = "0x151515"
+foreground = "0xd0d0d0"
+
+
+--------------------------------------------------------------------------------
+##MONOKAI THEME
+[colors.bright]
+black = "#75715e"
+blue = "#66d9ef"
+cyan = "#a1efe4"
+green = "#a6e22e"
+magenta = "#ae81ff"
+red = "#f92672"
+white = "#f9f8f5"
+yellow = "#f4bf75"
+
+[colors.cursor]
+cursor = "#f8f8f2"
+text = "#272822"
+
+[colors.normal]
+black = "#272822"
+blue = "#66d9ef"
+cyan = "#a1efe4"
+green = "#a6e22e"
+magenta = "#ae81ff"
+red = "#f92672"
+white = "#f8f8f2"
+yellow = "#f4bf75"
+
+[colors.primary]
+background = "#272822"
+foreground = "#f8f8f2"
+
+--------------------------------------------------------------------------------

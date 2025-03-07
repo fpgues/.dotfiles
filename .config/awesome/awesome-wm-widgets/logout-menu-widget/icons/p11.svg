@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+
+<svg
+   height="256px"
+   width="256px"
+   version="1.1"
+   id="Layer_1"
+   viewBox="-15.36 -15.36 542.72 542.72"
+   xml:space="preserve"
+   fill="#000000"
+   stroke="#000000"
+   stroke-width="8.704"
+   sodipodi:docname="p11.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs18" /><sodipodi:namedview
+   id="namedview16"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="2.0058594"
+   inkscape:cx="120.89581"
+   inkscape:cy="167.25998"
+   inkscape:window-width="1272"
+   inkscape:window-height="1411"
+   inkscape:window-x="4"
+   inkscape:window-y="23"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+
+<g
+   id="SVGRepo_bgCarrier"
+   stroke-width="0" />
+
+<g
+   id="SVGRepo_tracerCarrier"
+   stroke-linecap="round"
+   stroke-linejoin="round" />
+
+<g
+   id="SVGRepo_iconCarrier"> <path
+   style="fill:#1E0478;"
+   d="M256,0c141.155,0,256,114.845,256,256S397.155,512,256,512S0,397.155,0,256S114.845,0,256,0z M485.344,256c0-126.467-102.877-229.344-229.344-229.344S26.656,129.533,26.656,256S129.533,485.344,256,485.344 S485.344,382.467,485.344,256z"
+   id="path4" /> <path
+   style="fill:#94E7EF;"
+   d="M256,26.656c126.467,0,229.344,102.877,229.344,229.344S382.467,485.344,256,485.344 S26.656,382.467,26.656,256S129.533,26.656,256,26.656z M419.385,256c0-57.656-30.907-111.66-80.66-140.915 c-6.344-3.732-14.514-1.613-18.246,4.731s-1.613,14.514,4.731,18.246C366.86,162.559,392.73,207.74,392.73,256 c0,75.395-61.334,136.73-136.73,136.73S119.27,331.395,119.27,256c0-48.26,25.869-93.441,67.519-117.938 c6.344-3.732,8.463-11.902,4.731-18.246s-11.902-8.463-18.246-4.731C123.522,144.34,92.615,198.344,92.615,256 c0,90.096,73.289,163.385,163.385,163.385S419.385,346.096,419.385,256z M269.328,256V88.163c0-7.37-5.971-13.328-13.328-13.328 c-7.357,0-13.328,5.958-13.328,13.328V256c0,7.357,5.971,13.328,13.328,13.328C263.357,269.328,269.328,263.357,269.328,256z"
+   id="path6" /> <g
+   id="g12"> <path
+   style="fill:#1E0478;"
+   d="M338.726,115.085c49.753,29.254,80.66,83.259,80.66,140.915 c0,90.096-73.289,163.385-163.385,163.385S92.615,346.096,92.615,256c0-57.656,30.907-111.66,80.66-140.915 c6.344-3.732,14.514-1.613,18.246,4.731s1.613,14.514-4.731,18.246C145.14,162.559,119.27,207.74,119.27,256 c0,75.395,61.334,136.73,136.73,136.73S392.73,331.395,392.73,256c0-48.26-25.869-93.441-67.519-117.938 c-6.344-3.732-8.463-11.902-4.731-18.246C324.212,113.473,332.382,111.354,338.726,115.085z"
+   id="path8" /> <path
+   style="fill:#1E0478;"
+   d="M269.328,88.163V256c0,7.357-5.971,13.328-13.328,13.328c-7.357,0-13.328-5.971-13.328-13.328 V88.163c0-7.37,5.971-13.328,13.328-13.328C263.357,74.835,269.328,80.793,269.328,88.163z"
+   id="path10" /> </g> </g>
+
+</svg>

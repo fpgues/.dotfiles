@@ -1,0 +1,107 @@
+/*******************************************************************************
+ * ROFI SQUARED THEME USING THE NORD PALETTE
+ * User                 : LR-Tech
+ * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
+ *******************************************************************************/
+
+*{
+    --font:   "JetBrainsMono Nerd Font 12";
+    --font:   "ProggyClean CE Nerd Font 12";
+    --font:   "IosevkaTerm Nerd Font Regular 12";
+    --font:   "IosevkaTerm Nerd Font Regular 12";
+    --font:   "FantasqueSansMNerdFont Regular 12";
+    font:   "VictorMono                   Bold 10";
+
+    bg0:    #1b1e22;
+    bg1:    #3B4252;
+    fg0:    #ffffff;
+
+    accent-color1:    transparent;
+    accent-color:     #808080;
+    urgent-color:     #000000;
+
+    //background-color:   transparent;
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0;
+    padding:    0;
+    spacing:    0;
+}
+
+
+
+window {
+    location:   center;
+    width:      240;
+
+    background-color:   @bg0;
+}
+
+inputbar {
+    spacing:    0px;
+    padding:    -9px;
+
+    background-color:   @bg0;
+}
+
+prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
+}
+
+prompt {
+    text-color: @accent-color;
+}
+
+textbox {
+    padding:            8px;
+    background-color:   @bg0;
+}
+
+listview {
+    padding:    4px 0;
+    lines:      10;
+    columns:    1;
+
+    fixed-height:   false; //centraliza no centro do monitor o rofi
+    //fixed-height:   true;
+}
+
+element {
+    padding:    4px;
+    spacing:    8px;
+}
+
+element normal normal {
+    text-color: @fg0;
+}
+
+element normal urgent {
+    text-color: @urgent-color;
+}
+
+element normal active {
+    text-color: @accent-color;
+}
+
+element selected {
+    text-color: @bg0;
+}
+
+element selected normal, element selected active {
+    background-color:   @accent-color;
+
+}
+
+element selected urgent {
+    background-color:   @urgent-color;
+}
+
+element-icon {
+    size:   1.1em;
+}
+
+element-text {
+     //text-color: inherit;
+     text-color: #ffffff;
+}

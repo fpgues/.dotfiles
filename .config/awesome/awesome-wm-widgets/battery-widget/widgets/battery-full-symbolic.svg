@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="16.0px"
+   height="16.0px"
+   viewBox="0 0 16.0 16.0"
+   version="1.1"
+   id="SVGRoot"
+   sodipodi:docname="battery-full-symbolic.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview182"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="82.162793"
+     inkscape:cx="6.700113"
+     inkscape:cy="2.9636286"
+     inkscape:window-width="1268"
+     inkscape:window-height="1405"
+     inkscape:window-x="2650"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid188" />
+  </sodipodi:namedview>
+  <defs
+     id="defs177" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="SVGRepo_iconCarrier"
+       transform="matrix(0.76395368,0,0,0.76395368,-0.97709881,-1.1875069)">
+      <g
+         id="SVGRepo_iconCarrier-7"
+         transform="matrix(1.1993659,0,0,1.0156389,-2.5241791,-0.10703742)"
+         style="display:inline">
+        <rect
+           id="secondary"
+           x="4"
+           y="8"
+           width="16"
+           height="10"
+           rx="1"
+           transform="rotate(90,12,13)"
+           style="display:inline;fill:#6c6c6c;fill-opacity:1;stroke-width:1.18601;stroke-dasharray:none" />
+        <path
+           id="primary"
+           d="M 14,5 H 10 V 3 h 4 z m 3,15 V 6 A 1,1 0 0 0 16,5 H 8 A 1,1 0 0 0 7,6 v 14 a 1,1 0 0 0 1,1 h 8 a 1,1 0 0 0 1,-1 z"
+           style="display:inline;fill:none;stroke:#000000;stroke-width:1.30460833;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none" />
+        <path
+           style="display:inline;fill:#6c6c6c;fill-opacity:1;stroke-width:0;stroke-linejoin:bevel;stroke-miterlimit:0;paint-order:fill markers stroke"
+           d="m 10.403943,3.6354225 -0.01218,2.5002063 3.411664,-0.2773009 -0.0068,-2.2218282 z"
+           id="path292"
+           sodipodi:nodetypes="ccccc" />
+      </g>
+    </g>
+  </g>
+</svg>

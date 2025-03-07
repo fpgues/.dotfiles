@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Função para obter a frequência da CPU em GHz
+get_cpu_freq() {
+    awk -v sum=0 -v n=0 '{sum+=$1; n++} END {printf "%.2f\n", sum/n/1000000}' /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq
+}
+
+# Função para obter o uso da CPU em porcentagem
+get_cpu_usage() {
+    top -bn1 | awk '/^%Cpu/ {print $2}'
+}
+
+# Loop infinito para atualizar a wibar
+while true; do
+    cpu_freq=$(get_cpu_freq)
+    cpu_usage=$(get_cpu_usage)
+    echo "CPU: ${cpu_freq}GHz, ${cpu_usage}% de uso"
+    sleep 5  # Atualiza a cada 5 segundos
+done

@@ -1,0 +1,20 @@
+# Aparência
+rofi.font: DejaVu Sans Mono 12
+rofi.show-icons: true
+rofi.sidebar-mode: true
+# Comportamento
+rofi.matching: fuzzy
+rofi.sort: frecency
+rofi.scroll-method: 1
+rofi.fullscreen: false
+
+rofi.modi: drun,window
+rofi.lines: 13
+rofi.columns: 1
+rofi.width: 24
+rofi.drun-icon-theme: Pop
+rofi.sidebar-mode: true
+rofi.m: -4
+
+
+rofi.theme: /home/filipe/.config/rofi/themes/squared-nord.rasi

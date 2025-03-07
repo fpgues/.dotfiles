@@ -1,0 +1,83 @@
+#!/bin/bash
+
+echo " "
+echo "      ___   __  ____________  "
+echo "     /   | / / / /_  __/ __ \ "
+echo "    / /| |/ / / / / / / / / / "
+echo "   / ___ / /_/ / / / / /_/ / "
+echo "  /_/  |_\____/ /_/  \____/ "
+echo " "
+
+#################################################################################
+#####ATUALIZADO##################################################################
+#################################################################################
+
+### libraries
+sudo apt -y install build-essential libpam0g-dev libxcb-xkb-dev libncurses5-dev linux-headers-amd64 libevdev2 libpcre3-dev policykit-1 policykit-1-gnome
+
+### stantard
+sudo apt -y install mlocate pamixer shotwell xclip curl git htop neofetch flameshot rofi picom python3-pip pavucontrol gcc blueman pulsemixer ranger nitrogen vim neovim wget lxappearance gimp w3m-img fonts-font-awesome awesome awesome-extra meson asciidoc parcellite libnotify-bin i3lock xautolock xpad unclutter thunar kitty tree knotes qimgv
+
+### Picom (dependências caso necessário)
+sudo apt -y install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev  libpcre2-dev  libevdev-dev uthash-dev libev-dev libx11-xcb-dev
+
+
+### Apps Snaps
+sudo apt update
+
+sudo apt install snapd
+
+sudo snap install core
+
+
+#################################################################################
+#####DEPENDENCE##################################################################
+#################################################################################
+
+### fzf
+### Install zsh & oh-my-zsh!
+sudo apt install zsh && zsh
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+## Fonts/icons/themes
+rm ~/.zshrc
+
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
+
+ln -s ~/.dotfiles/.gitconfig ~/ && ln -s ~/.dotfiles/.config/* ~/.config/
+
+cd ~/.local/share/ && sudo mkdir rofi
+
+sudo ln -s ~/.dotfiles/.config/rofi/themes/ ~/.local/share/rofi/
+
+sudo rm -r /usr/share/awesome/themes/
+
+sudo ln -s ~/.dotfiles/.config/awesome/themes/ /usr/share/awesome/
+
+sudo ln -s ~/.dotfiles/.config/lx-themes/fonts ~/.fonts
+
+sudo ln -s ~/.dotfiles/.config/lx-themes/cursor/* /usr/share/icons
+
+sudo ln -s ~/.dotfiles/.config/lx-themes/icons/* /usr/share/icons
+
+sudo ln -s ~/.dotfiles/.config/others/* ~/.oh-my-zsh/themes/
+
+
+### PARA RODAR O :PlugInstall no NVIM
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+#Abra o NVIM e execute ":PlugInstall"
+
+#################################################################################
+#####RELOAD FONTS###############################################################
+#################################################################################
+
+## Reload fonts
+fc-cache -f -v

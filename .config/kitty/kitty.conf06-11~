@@ -1,0 +1,244 @@
+##################################
+############# FONTS ##############
+##################################
+
+#font_family         ConsolaMono
+#font_family         FantasqueSansMNerdFont
+#font_family         FiraCode Nerd Font
+#font_family         GohuFont11NerdFont
+#font_family         InconsolataNerdFont
+#font_family         Iosevka Nerd Font
+#font_family         IosevkaTerm Nerd Font
+#font_family         JetBrainsMono Nerd Font
+#font_family         Maple Mono NF
+#font_family         mononoki
+#font_family         NovaMono
+#font_family         ProggyClean CE Nerd Font
+#font_family         UbuntuSans Nerd Font
+font_family         VictorMono-Bold
+#font_family         ZedmonoNerdFontMono
+
+italic_font         auto
+bold_font           auto
+bold_italic_font    auto
+
+font_size        10.0
+
+adjust_line_height  100%
+
+##################################
+############# CURSOR #############
+##################################
+
+cursor                  #FFFFFF
+cursor_shape            beam
+shell_integration       no-cursor
+select_by_word_characters :@-./_~?&=%+#
+repaint_delay           10
+term xterm-kitty
+open_url_with default
+scrollback_lines        10000
+cursor_blink_interval   10000000000
+
+##################################
+############# BORDER #############
+##################################
+
+window_border_width         5
+window_margin_width         10
+active_border_color         #ffffff
+inactive_border_color       #cccccc
+
+##################################
+########## KEY_BINDINGS ##########
+##################################
+map ctrl+shift+n launch --cwd=current
+
+map ctrl+shift+t launch --cwd=current
+map ctrl+shift+d launch --cwd current
+
+map ctrl+tab next_tab
+map shift+tab previous_tab
+
+map shift+ctrl+v        paste_from_clipboard
+map shift+ctrl+v        paste_from_selection
+map shift+ctrl+c        copy_to_clipboard
+map shift+ctrl+c        copy_to_selection
+
+#map ctrl+l clear_log_notice
+
+map shift+up                croll_line_up
+map shift+down              scroll_line_down
+map shift+page_up           scroll_page_up
+map shift+page_down         croll_page_down
+map ctrl+shift+home         scroll_home
+map ctrl+shift+end          scroll_end
+
+map ctrl+equal              increase_font_size
+map ctrl+minus              decrease_font_size
+
+#0 off 1 on
+confirm_os_window_close     0
+enable_audio_bell           false
+
+
+##################################
+############# COLORS #############
+##################################
+
+#Transparence
+foreground_opacity      0.0
+background_opacity      0.9
+
+# standard background
+#foreground          #FFFFFF
+#background          #121417
+
+#foreground          #FFFFFF
+#background          #111d20
+
+#selection_foreground        #000000
+#selection_background        #dddddd
+
+#########################################################################
+#Base16-default-dark#####################################################
+#########################################################################
+selection_background #d8d8d8
+selection_foreground #181818
+url_color #b8b8b8
+cursor #d8d8d8
+active_border_color #585858
+inactive_border_color #282828
+active_tab_background #181818
+active_tab_foreground #d8d8d8
+inactive_tab_background #282828
+inactive_tab_foreground #b8b8b8
+tab_bar_background #282828
+
+# normal
+color0 #181818
+color1 #ab4642
+color2 #a1b56c
+color3 #f7ca88
+color4 #7cafc2
+color5 #ba8baf
+color6 #86c1b9
+color7 #d8d8d8
+
+# bright
+color8 #585858
+color9 #dc9656
+color10 #282828
+color11 #383838
+color12 #b8b8b8
+color13 #e8e8e8
+color14 #a16946
+color15 #f8f8f8
+
+#########################################################################
+#SONOKAI+DRACULA(GREEN)##################################################
+#########################################################################
+## Black
+#color0 #1a181a
+#color8 #848089
+## Red
+#color1 #f85e84
+#color9 #f85e84
+## Green
+##color2 #9ecd6f
+#color2  #50fa7b
+##color10 #9ecd6f
+#color10 #69ff94
+## Yellow
+#color3 #e5c463
+#color11 #e5c463
+## Blue
+#color4 #7accd7
+#color12 #7accd7
+## Magenta
+#color5 #ab9df2
+#color13 #ab9df2
+## Cyan
+#color6 #ef9062
+#color7 #ef9062
+## White
+#color7 #e3e1e4
+#color15 #e3e1e4
+
+
+##foreground            #f8f8f2
+###background            #282a36
+#selection_foreground  #ffffff
+#selection_background  #44475a
+#url_color #8be9fd
+#color0  #21222c
+#color8  #6272a4
+#color1  #ff5555
+#color9  #ff6e6e
+#color2  #50fa7b
+#color10 #69ff94
+#color3  #f1fa8c
+#color11 #ffffa5
+#color4  #bd93f9
+#color12 #d6acff
+#color5  #ff79c6
+#color13 #ff92df
+#color6  #8be9fd
+#color14 #a4ffff
+#color7  #f8f8f2
+#color15 #ffffff
+#cursor            #f8f8f2
+#cursor_text_color background
+#active_tab_foreground   #282a36
+#active_tab_background   #f8f8f2
+#inactive_tab_foreground #282a36
+#inactive_tab_background #6272a4
+#mark1_foreground #282a36
+#mark1_background #ff5555
+
+
+
+# Nord Colorscheme for Kitty
+# Based on:
+# - https://gist.github.com/marcusramberg/64010234c95a93d953e8c79fdaf94192
+# - https://github.com/arcticicestudio/nord-hyper
+
+#foreground            #D8DEE9
+#background            #2E3440
+#selection_foreground  #000000
+#selection_background  #FFFACD
+#url_color             #0087BD
+#cursor                #81A1C1
+#
+## black
+#color0   #3B4252
+#color8   #4C566A
+#
+## red
+#color1   #BF616A
+#color9   #BF616A
+#
+## green
+#color2   #A3BE8C
+#color10  #A3BE8C
+#
+## yellow
+#color3   #EBCB8B
+#color11  #EBCB8B
+#
+## blue
+#color4  #81A1C1
+#color12 #81A1C1
+#
+## magenta
+#color5   #B48EAD
+#color13  #B48EAD
+#
+## cyan
+#color6   #88C0D0
+#color14  #8FBCBB
+#
+## white
+#color7   #E5E9F0
+#color15  #ECEFF4
+

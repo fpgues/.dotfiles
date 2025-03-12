@@ -328,16 +328,16 @@ local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightne
 local cpu_1 = lain.widget.cpu {
     settings = function()
         --widget:set_markup("  " .. cpu_now.usage .. "%")
-        widget:set_markup("  " .. cpu_now.usage .. "%")
-        --widget:set_markup("CPU:" .. cpu_now.usage .. "%")
+        --widget:set_markup("  " .. cpu_now.usage .. "%")
+        widget:set_markup("CPU: " .. cpu_now.usage .. "%")
     end
 }
 
 local mem_1 = lain.widget.mem({
     settings = function()
         --widget:set_markup("  " .. mem_now.used .." MB")
-        widget:set_markup("  " .. mem_now.used .." MB")
-        --widget:set_markup("MEM:" .. mem_now.used .."MB16GB")
+        --widget:set_markup("  " .. mem_now.used .." MB")
+        widget:set_markup("MEM: " .. mem_now.used .."MB16GB")
     end
 })
 
@@ -345,9 +345,11 @@ local mem_1 = lain.widget.mem({
 local fsroothome = lain.widget.fs({
     settings  = function()
         --widget:set_text("󰆼 Disk% ")
-        widget:set_text("  /" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
+        --widget:set_text("  /" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
         --widget:set_text("󰆼 /" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
         --widget:set_text("DISK:/" .. fs_now ["/"].percentage .. "%" .. " ~/" ..  fs_now["/home"].percentage .. "%")
+        widget:set_text("DISK: " ..  fs_now["/home"].percentage .. "%")
+
     end
 })
 
@@ -406,7 +408,7 @@ watch("acpi -i", 30, update_battery, battery_widget1)
 mytextclock = wibox.widget.textclock("%a %e %b %H:%M ", 1)
 
 local cw = calendar_widget({
-    theme = 'dark', --default ,nord, dark, tokyonight
+    theme = 'nord', --default ,nord, dark, tokyonight
     placement = 'top_right', --bottom, bottom_right, center, top_right
     start_sunday = false,
     radius = 7,
@@ -758,9 +760,9 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
                     --s.mylayoutbox,sep,
-                    s.mylayoutbox,
+                    --s.mylayoutbox,
                     --mylauncher,sep3,
-                    sep,sep1,sep,
+                    --sep,sep1,sep,
                     s.mytaglist,
                     --s.mytasklist,
                     sep,
@@ -790,17 +792,18 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
-                    --lay_widget,
-                    --s.mylayoutbox,
                     systray,
+                    sep,sep1,sep,
+                    lay_widget,
+                    s.mylayoutbox,
                     sep,sep1,sep,
                     cpu_1,
                     --sep,
                     --cpu_widget(),
                     sep,sep1,sep,
-                    fsroothome,
-                    sep,sep1,sep,
                     mem_1,
+                    sep,sep1,sep,
+                    fsroothome,
                     --cpu1.widget, cpu_hz,
                     --sep,
                     ----ram_widget(),
@@ -1580,9 +1583,9 @@ beautiful.useless_gap = 6,
 --solo
 --awful.spawn.with_shell('xrandr --output DP-0 --primary --mode 2560x1440 --rate 100  --output eDP-1 --off')--filesystem
 
+awful.spawn.with_shell('xrandr')
+awful.spawn.with_shell('xrandr --rate 100')
 awful.spawn.with_shell('xrandr --output DisplayPort-0 --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
-
-
 
 ----------------------------------------------------------------------
 ---------------------------- AUTOSTART -------------------------------
@@ -1623,4 +1626,5 @@ awful.spawn.with_shell("nm-applet")
 --awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
 --awful.spawn.with_shell('localsend_app') --localsend
 --awful.spawn.with_shell('knotes')
+
 

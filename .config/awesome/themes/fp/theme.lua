@@ -40,7 +40,7 @@ theme.font          = "ProggyClean CE Nerd Font   Regular 12"
 --theme.bg_normal  = "#1B443C"
 --theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal  = "#1C2529"
-theme.bg_normal = "#1F2329" --igual kitty
+--theme.bg_normal = "#1F2329" --igual kitty
 --theme.bg_normal  = "#222222" -- PADRAO
 --theme.bg_normal     = "#263238" -- material blue-gray
 --theme.bg_normal     = "#263238EF" -- material blue-gray
@@ -52,7 +52,7 @@ theme.bg_normal = "#1F2329" --igual kitty
 --theme.bg_normal     = "#3b4252" --nord
 --theme.bg_normal     = "#2B2E3B" --light1 nord
 --theme.bg_normal     = "#2e3440" --light nord
---theme.bg_normal     = "#2b2e3b" --dark nord
+theme.bg_normal     = "#2b2e3b" --dark nord
 --theme.bg_normal     = "#27383a" --light green
 --theme.bg_normal     = "#111d20" --dark green
 --theme.bg_normal     = "#1b2523" --green
@@ -68,7 +68,9 @@ theme.bg_normal = "#1F2329" --igual kitty
 --theme.bg_focus = "#282c340F"
 --theme.bg_focus = "#ffffff1F"
 --theme.bg_focus      = "#535d6c"
-theme.bg_focus      = "#1F2329"
+--theme.bg_focus      = "#1F2329"
+theme.bg_focus      = "#2b2e3b"
+
 
 theme.bg_urgent = "#ff0000"
 theme.bg_minimize = "#444444"
@@ -107,13 +109,12 @@ theme.fg_minimize = "#ffffff"
 ----------------------------------------------------------
 ----------------------------------------------------------
 theme.useless_gap = dpi(0)
-theme.border_width = dpi(2)
+theme.border_width = dpi(1)
 
 --BORDA DAS JANELAS
 --theme.border_normal  = "#848487" -- Gray
 --theme.border_normal = "#535d6F"
---theme.border_normal = "#0000000F" --transparent
-theme.border_normal = "#000000"
+theme.border_normal = "#0000000F"
 
 
 
@@ -229,22 +230,22 @@ theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/m
 --theme.wallpaper = themes_path.."default/background.png"
 
 -- You can use your own layout icons like this:
-theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
-theme.layout_fairv = themes_path .. "default/layouts/fairvw.png"
-theme.layout_floating = themes_path .. "default/layouts/floatingw.png"
-theme.layout_magnifier = themes_path .. "default/layouts/magnifierw.png"
-theme.layout_max = themes_path .. "default/layouts/maxw.png"
-theme.layout_fullscreen = themes_path .. "default/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path .. "default/layouts/tilebottomw.png"
-theme.layout_tileleft = themes_path .. "default/layouts/tileleftw.png"
-theme.layout_tile = themes_path .. "default/layouts/tilew.png"
-theme.layout_tiletop = themes_path .. "default/layouts/tiletopw.png"
-theme.layout_spiral = themes_path .. "default/layouts/spiralw.png"
-theme.layout_dwindle = themes_path .. "default/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path .. "default/layouts/cornernww.png"
-theme.layout_cornerne = themes_path .. "default/layouts/cornernew.png"
-theme.layout_cornersw = themes_path .. "default/layouts/cornersww.png"
-theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
+--theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
+--theme.layout_fairv = themes_path .. "default/layouts/fairvw.png"
+--theme.layout_floating = themes_path .. "default/layouts/floatingw.png"
+--theme.layout_magnifier = themes_path .. "default/layouts/magnifierw.png"
+--theme.layout_max = themes_path .. "default/layouts/maxw.png"
+--theme.layout_fullscreen = themes_path .. "default/layouts/fullscreenw.png"
+--theme.layout_tilebottom = themes_path .. "default/layouts/tilebottomw.png"
+--theme.layout_tileleft = themes_path .. "default/layouts/tileleftw.png"
+--theme.layout_tile = themes_path .. "default/layouts/tilew.png"
+--theme.layout_tiletop = themes_path .. "default/layouts/tiletopw.png"
+--theme.layout_spiral = themes_path .. "default/layouts/spiralw.png"
+--theme.layout_dwindle = themes_path .. "default/layouts/dwindlew.png"
+--theme.layout_cornernw = themes_path .. "default/layouts/cornernww.png"
+--theme.layout_cornerne = themes_path .. "default/layouts/cornernew.png"
+--theme.layout_cornersw = themes_path .. "default/layouts/cornersww.png"
+--theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
 
 -- Generate Awesome icon:
 --theme.awesome_icon = theme_assets.awesome_icon(

@@ -52,9 +52,9 @@ awful.rules.rules = {
             c.floating = true
         end
 
-        --if c.instance == "xpad" then
-        --    c.floating = true
-        --end
+        if c.instance == "xpad" then
+            c.floating = true
+        end
 
         if c.instance == "spotify" then
             c.floating = true
@@ -268,8 +268,8 @@ fs_widget = wibox.widget.textbox("FS:")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile.left,
     awful.layout.suit.floating,
+    awful.layout.suit.tile.left,
     --awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
 
@@ -337,7 +337,8 @@ local mem_1 = lain.widget.mem({
     settings = function()
         --widget:set_markup("  " .. mem_now.used .." MB")
         --widget:set_markup("  " .. mem_now.used .." MB")
-        widget:set_markup("MEM: " .. mem_now.used .."MB16GB")
+        widget:set_markup("MEM: " .. mem_now.used .."MB32GB")
+        --widget:set_markup("MEM: " .. mem_now.used .."MB16GB")
     end
 })
 
@@ -784,7 +785,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
                 {   -- Middle widget
                     layout = wibox.layout.flex.horizontal,
-                    s.mytasklist,
+                    --s.mytasklist,
                     --s.mytaglist,
                     --mytextclock,
                 },
@@ -909,12 +910,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
             {description = "open a terminal", group = "launcher"}),
 
-    --awful.key({ modkey1,  }, "l", function () awful.spawn('i3lock -c 000000') end,
-    --        {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey1,  }, "l", function () awful.spawn('i3lock -c 000000') end,
+            {description = "open a terminal", group = "launcher"}),
 
 
-    awful.key({ modkey1,          }, "l", function () awful.spawn('gdmflexiserver --lock') end,
-            {description = "Lockscreen", group = "Custom"}),
+    --awful.key({ modkey1,          }, "l", function () awful.spawn('gdmflexiserver --lock') end,
+    --        {description = "Lockscreen", group = "Custom"}),
 
     --awful.key({ modkey, "Control"  }, "l", function () awful.spawn('xscreensaver-command -l') end,
             --{description = "open a terminal", group = "launcher"}),
@@ -1585,11 +1586,19 @@ beautiful.useless_gap = 6,
 
 awful.spawn.with_shell('xrandr')
 awful.spawn.with_shell('xrandr --rate 100')
-awful.spawn.with_shell('xrandr --output DisplayPort-0 --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
+--awful.spawn.with_shell('xrandr --output DisplayPort-0 --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
+
+
+
+ awful.spawn.with_shell('xrandr --output DisplayPort-0 --primary --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
+
+
+
 
 ----------------------------------------------------------------------
 ---------------------------- AUTOSTART -------------------------------
 ----------------------------------------------------------------------
+awful.spawn.with_shell("sleep 2 && nm-applet")
 --awful.spawn.with_shell('autorandr') --bluetooth
 awful.spawn.with_shell('blueman-applet') --bluetooth
 awful.spawn.with_shell('blueman-tray') --bluetooth
@@ -1626,5 +1635,4 @@ awful.spawn.with_shell("nm-applet")
 --awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
 --awful.spawn.with_shell('localsend_app') --localsend
 --awful.spawn.with_shell('knotes')
-
 

@@ -34,9 +34,9 @@ window {
     border-color:   #535d6F;
     //border-color:   #ffffff9f;
     border-radius:  12;
-    location:       north; //north, center, south
+    location:       center; //north, center, south
     width:          540;
-    margin:         330px 0 0 0; /* Margem superior de 20px */
+    margin:         0 0 0 0; /* Margem superior de 20px */
 }
 
 inputbar {

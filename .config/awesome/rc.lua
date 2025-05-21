@@ -256,20 +256,21 @@ modkey = "Mod1" -- Alt
 modkey1 = "Mod4" -- Win
 
 -- Separator Blanc
-sep = wibox.widget.textbox(" ")
-sep1 = wibox.widget.textbox("") --("") 󰇙 ") --("") --("  ") --("⏽") --("") 󰇙
+sep = wibox.widget.textbox("   ")
+sep1 = wibox.widget.textbox("") -- 󰇙 ") --("") --("  ") --("⏽") --("") 󰇙
+space = wibox.widget.textbox(" ") -- 󰇙 ") --("") --("  ") --("⏽") --("") 󰇙
 sep2 = wibox.widget.textbox(" 󱗿 ")
 sep3 = wibox.widget.textbox(" ")
 percent_widget = wibox.widget.textbox("%")
-lay_widget = wibox.widget.textbox("Lay:")
+lay_widget = wibox.widget.textbox("Lay: ")
 fs_widget = wibox.widget.textbox("FS:")
 -- Keyboard map indicator and switcher
 --mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile.left,
+    awful.layout.suit.floating,
     --awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
 
@@ -337,8 +338,9 @@ local mem_1 = lain.widget.mem({
     settings = function()
         --widget:set_markup("  " .. mem_now.used .." MB")
         --widget:set_markup("  " .. mem_now.used .." MB")
-        widget:set_markup("MEM: " .. mem_now.used .."MB32GB")
+        --widget:set_markup("MEM: " .. mem_now.used .."MB32GB")
         --widget:set_markup("MEM: " .. mem_now.used .."MB16GB")
+        --widget:set_markup(" " .. mem_now.used .."32GB")
     end
 })
 
@@ -375,9 +377,49 @@ vicious.register(wifi_widget, vicious.widgets.wifi,
         end, 10, "wlp0s20f3" -- Altere "wlp2s0" para o nome da sua interface Wi-Fi
 )
 
+local memwidget = wibox.widget.textbox()
+vicious.register(memwidget, vicious.widgets.mem, "MEM: $1% /32GB", 2)
 
 
 
+
+local mem_widget1 = wibox.widget {
+    widget = wibox.widget.textbox,
+    markup = "MEM: --% --GB de --GB",
+}
+
+-- Widget de memória personalizada
+vicious.register(mem_widget1, vicious.widgets.mem,
+    function (widget, args)
+        -- args[1] = uso em %
+        -- args[2] = usado em MB
+        -- args[3] = total em MB
+        local used_gb  = string.format("%.1f", args[2] / 1024)
+        local total_gb = string.format("%.0f", args[3] / 1024)
+        --return "MEM: " .. args[1] .. "% " .. used_gb .. " GB/32GB" .. total_gb .. "GB"
+        return "MEM: " .. args[1] .. "% " .. used_gb .. "GB/32GB"
+    end,
+5)
+
+-- Cria o widget
+local cpuwidget = wibox.widget.textbox()
+-- Registra o widget com o vicious
+vicious.register(cpuwidget, vicious.widgets.cpu, "CPU: $1%", 2)
+
+-- Widget moderno
+local cputemp_widget = wibox.widget {
+    widget = wibox.widget.textbox,
+    markup = "CPU Temp: --°C",
+}
+
+-- Registra o widget
+vicious.register(cputemp_widget, vicious.widgets.thermal,
+    function (widget, args)
+        return  " /" .. args[1] .. "°C"
+    end, 5, "thermal_zone0"
+)
+
+widget:set_markup("MEM: " .. mem_now.used .."MB32GB")
 -- Cria o widget de texto para a bateria
 local battery_widget1 = wibox.widget {
     {
@@ -410,7 +452,7 @@ mytextclock = wibox.widget.textclock("%a %e %b %H:%M ", 1)
 
 local cw = calendar_widget({
     theme = 'nord', --default ,nord, dark, tokyonight
-    placement = 'top_right', --bottom, bottom_right, center, top_right
+    placement = 'center', --'top_right', --bottom, bottom_right, center, top_right
     start_sunday = false,
     radius = 7,
     -- with customized next/previous (see table above)
@@ -542,10 +584,10 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({" 1 "," 2 "," 3 "," 4 "," 5 "}, s, awful.layout.layouts[1])
         --awful.tag({"   󰬺","   󰬻","   󰬼","   󰬽","   󰬾","   󰬿"}, s, awful.layout.layouts[1])
         --awful.tag({" 󰬺 "," 󰬻 "," 󰬼 "," 󰬽 "," 󰬾 "," 󰬿 "," 󰭀 "," 󰭁 "}, s, awful.layout.layouts[1])
-        --awful.tag({" Web "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
+        --awful.tag({" www "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
         --awful.tag({" 1-Web "," 2-Term "," 3-Files "," 4-Others "}, s, awful.layout.layouts[1])
         --awful.tag({"   www ","   term ","   docs ","   media ", "   [*] "}, s, awful.layout.layouts[1])
-        awful.tag({" www "," term "," docs "," media "," [*] "}, s, awful.layout.layouts[1])
+        awful.tag({" www "," cli "," docs "," * "}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({" 󰈿 "," 󰈿 "," 󰈿 ",}, s, awful.layout.layouts[1])
@@ -761,7 +803,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
                     --s.mylayoutbox,sep,
-                    --s.mylayoutbox,
+                    s.mylayoutbox,space,
                     --mylauncher,sep3,
                     --sep,sep1,sep,
                     s.mytaglist,
@@ -787,23 +829,25 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     layout = wibox.layout.flex.horizontal,
                     --s.mytasklist,
                     --s.mytaglist,
-                    --mytextclock,
+                    mytextclock,
                 },
 
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
                     systray,
-                    sep,sep1,sep,
-                    lay_widget,
-                    s.mylayoutbox,
-                    sep,sep1,sep,
+                    --lay_widget,
+                    --s.mylayoutbox,
+                    sep,
                     cpu_1,
+                    cputemp_widget,
                     --sep,
                     --cpu_widget(),
-                    sep,sep1,sep,
+                    sep,
+                    --memwidget,
+                    mem_widget1,
                     mem_1,
-                    sep,sep1,sep,
+                    sep,
                     fsroothome,
                     --cpu1.widget, cpu_hz,
                     --sep,
@@ -824,19 +868,22 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --weather,
                     --date,
                     --sep,
-                    --wifi_widget,
-                    sep,sep1,sep,
+        --
+                    ---VICIOUS WIDGETS
+                    --widget_typeifi_widget,
+                    --memwidget,
+                    --cpuwidget,
+                    --mytextclock,
+
+                    sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     --sep,
                     --battery_widget(),
                     --battery_widget1,
                     --sep1,
                     --mykeyboardlayout,
-                    --sep1,
-                    sep,
+                    space,
                     logout_menu_widget(),
-                    sep,sep1,sep,
-                    mytextclock,
                 },
             }
 
@@ -885,7 +932,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --mykeyboardlayout,
                     --sep1,
                     --mytextclock,
-                    sep,
+                    --sep,
                     logout_menu_widget(),
                     --sep,
                     --mytextclock,
@@ -950,7 +997,7 @@ globalkeys = gears.table.join(
              {description = "Combine Sink", group = "Custom"}),
 
     
-    awful.key({ modkey1, }, "p", function()  awful.spawn.with_shell(" kitty -e /home/filipe/.config/scripts/toggle_monitors.sh") end, 
+    awful.key({ modkey1, }, "p", function()  awful.spawn.with_shell(" kitty -e /home/filipe/.config/scripts/toggle_monitors.sh") end,
             {description = "Alternar monitores", group = "custom"}),
     
 
@@ -965,7 +1012,6 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Control"  },   "c",      function () awful.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command ' Exec ' ") end,
             {description = "Rofi-greenclip", group = "Custom"}),
-
 
     awful.key({ modkey         },   "t",      function () awful.spawn("kitty -e htop") end,
             {description = "Open htop", group = "Custom"}),
@@ -1033,8 +1079,8 @@ globalkeys = gears.table.join(
             {description="show help", group="awesome"}),
 
     --  Control Clients
-    --awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
-    --        {description = "go back", group = "tag"}),
+    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+            {description = "go back", group = "tag"}),
 
     --awful.key({ modkey, "Control" }, "Tab", awful.tag.history.restore,
     --          {description = "go back", group = "tag"}),
@@ -1046,8 +1092,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
             {description = "swap with previous client by index", group = "client"}),
 
-    awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end,
-            {description = "focus the next screen", group = "screen"}),
+    --awful.key({ modkey,           }, "Escape", function () awful.screen.focus_relative( 1) end,
+    --        {description = "focus the next screen", group = "screen"}),
 
     -- MUDAR DE MONITOR
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
@@ -1076,8 +1122,8 @@ globalkeys = gears.table.join(
             {description = "toggle floating", group = "client"}),
 
     -- Layout Manipulation
-    awful.key({ modkey,           }, "Tab", function () awful.client.focus.byidx( 1) end,
-            {description = "focus next by index", group = "client"}),
+    --awful.key({ modkey,           }, "Tab", function () awful.client.focus.byidx( 1) end,
+    --        {description = "focus next by index", group = "client"}),
 
 
     awful.key({ modkey,           }, "l", function () awful.client.focus.byidx( 1) end,
@@ -1346,9 +1392,9 @@ globalkeys = gears.table.join(
 --    awful.spawn.with_shell("i3lock")
 --end
 
-function lock_screen()
-    awful.spawn.with_shell("gdmflexiserver --lock")
-end
+--function lock_screen()
+--    awful.spawn.with_shell("gdmflexiserver --lock")
+--end
 
 
 -- Rules to apply to new clients (through the "manage" signal).
@@ -1368,6 +1414,74 @@ awful.rules.rules = {
         }
     },
 
+---- Forçar todos Chrome Apps a não flutuarem
+--    {
+--        rule_any = {
+--            class = { "crx_*" },
+--        },
+--        properties = {
+--            floating = false
+--        }
+--    },
+
+
+-- Regras padrão (não remova)
+    {
+        rule = { },
+        properties = {
+            border_width = beautiful.border_width,
+            border_color = beautiful.border_normal,
+            focus = awful.client.focus.filter,
+            raise = true,
+            keys = clientkeys,
+            buttons = clientbuttons,
+            screen = awful.screen.preferred,
+            placement = awful.placement.no_overlap + awful.placement.no_offscreen
+        }
+    },
+
+--FIX TAG
+  -- Firefox na tag 2 da tela principal
+
+
+    {
+        rule = { class = "Google-chrome"},
+        properties = {
+            tag = " www ",
+            screen = 1,
+            switch_to_tags = true
+        }
+    },
+
+    {
+        rule = { class = "kitty"},
+        properties = {
+            tag = " cli ",
+            screen = 1,
+            switch_to_tags = true
+        }
+    },
+
+    {
+        rule = { class = "Thunar"},
+        properties = {
+            tag = " docs ",
+            screen = 1,
+            switch_to_tags = true
+        }
+    },
+
+    {
+        rule = { class = "Chromium"},
+        properties = {
+            tag = " * ",
+            screen = 1,
+            switch_to_tags = true
+        }
+    },
+
+
+
     -- Floating clients.
     { rule_any = {
         instance = {
@@ -1376,6 +1490,8 @@ awful.rules.rules = {
           "pinentry",
         },
 
+
+    ---INCLUIR PARA VIRAR FLOATING APPS
         class = {
           "Arandr",
           --"kitty",
@@ -1400,23 +1516,23 @@ awful.rules.rules = {
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
+      },
+
+      --APPS EM MODO FLOAT ABREM NO CENTRO DA TELA
+      properties = { floating = true,
+                   placement = awful.placement.centered }
     },
 
-    --APPS EM MODO FLOAT ABREM NO CENTRO DA TELA
-    properties = { floating = true,
-                   placement = awful.placement.centered }},
-
-    
 
     -- BARRA DE TITULOS
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
-    },
+    --{ rule_any = {type = { "normal", "dialog" }
+    --  }, properties = { titlebars_enabled = true }
+    --},
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     { rule = { class = "Firefox" },
-        properties = { screen = 1, tag = "2" } 
+        properties = { screen = 1, tag = "2" }
     },
 
 
@@ -1550,7 +1666,7 @@ client.connect_signal("unfocus", function(c)
 ---------------------------- GAPS ------------------------------------
 ----------------------------------------------------------------------
 
-beautiful.useless_gap = 6,
+beautiful.useless_gap = 4,
 
 --beautiful.gap_single_client   = false
 

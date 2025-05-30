@@ -13,7 +13,7 @@ local theme = {}
 
 --theme.font          = "Sans                Regular 10"
 --theme.font          = "ConsolaMono                Regular 10"
---theme.font          = "FantasqueSansMNerdFont     Regular 10"
+theme.font          = "FantasqueSansMNerdFont     Regular 12"
 --theme.font          = "FiraCode Nerd Font         SemiBold 8"
 --theme.font          = "GohuFont11NerdFont         Regular 12"
 --theme.font          = "InconsolataNerdFont        Regular 12"
@@ -27,16 +27,17 @@ local theme = {}
 --theme.font          = "3270NerdFont           Regular 12"
 --theme.font          = "ProggyClean CE Nerd Font   Regular 12"
 --theme.font          = "UbuntuSans Nerd Font       SemiBold 10"
-theme.font          = "VictorMono Bold                   10"
+--theme.font          = "VictorMono Bold                  10"
 --theme.font          = "ZedmonoNerdFontMono        Bold 10"
+--theme.font          = "Font Awesome 6 Brands Regular 6"
 
 ----------------------------------------------------------
 ---------------BARRA--------------------------------------
 ----------------------------------------------------------
 --theme.bg_normal     = "#2C2C2CAF"  --Orchis-dark
 
---theme.bg_normal = "#1F2329" --igual kitty
---theme.bg_normal     = "#000000AF"
+--theme.bg_normal     = "#00000000"
+theme.bg_normal = "#1F2329DF" --igual kitty
 --theme.bg_normal  = "#644540"
 --theme.bg_normal  = "#1B443C"
 --theme.bg_normal  = "#282C34" --onedark
@@ -58,21 +59,22 @@ theme.font          = "VictorMono Bold                   10"
 --theme.bg_normal     = "#2E1643"
 --theme.bg_normal     = "#864087"
 --theme.bg_normal     = "#060817"
-theme.bg_normal     = "#000000"
+--theme.bg_normal     = "#000000"
 ---------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
 --TAGLISTCOLOR
 --theme.bg_focus      = "#8a8ea8" -- #e9befb" --"#db93f9" --"#535d6c"
 --theme.bg_focus = "#282c340F"
---theme.bg_focus = "#ffffff1F"
+theme.bg_focus = "#ffffff00"
 --theme.bg_focus      = "#535d6c"
 --theme.bg_focus      = "#1F2329"
-theme.bg_focus      = "#2b2e3b"
+--theme.bg_focus      = "#2b2e3b"
 
 
 theme.bg_urgent = "#ff0000"
-theme.bg_minimize = "#444444"
+theme.bg_minimize = "#000000"
+--theme.bg_minimize = "#444444"
 
 --theme.bg_systray    = theme.bg_normal
 --theme.bg_systray    = "#0000001F"
@@ -80,7 +82,9 @@ theme.bg_minimize = "#444444"
 
 
 --COLOR DOT
-theme.fg_normal1 = "#88c0d0"
+--theme.fg_normal1 = "#88c0d0"
+theme.fg_normal1 = "#ff5555"
+--theme.fg_normal1 = "#FFFFFF"
 ----------------------------------------------------------
 ------------COLOR-FONT------------------------------------
 ----------------------------------------------------------
@@ -96,8 +100,8 @@ theme.fg_normal = "#fffff1"
 ----------------------------------------------------------
 --theme.fg_focus = "#ffffff" --standard
 --theme.fg_focus      = "#000000"
---theme.fg_focus      = "#ff5555"
-theme.fg_focus      = "#b4f9f8"
+theme.fg_focus      = "#ff5555"
+--theme.fg_focus      = "#b4f9f8"
 --theme.fg_focus      = "#88c0d0"
 
 ----------------------------------------------------------
@@ -108,7 +112,7 @@ theme.fg_minimize = "#ffffff"
 ----------------------------------------------------------
 ----------------------------------------------------------
 theme.useless_gap = dpi(0)
-theme.border_width = dpi(2)
+theme.border_width = dpi(1)
 
 --BORDA DAS JANELAS
 --theme.border_normal  = "#848487" -- Gray
@@ -120,12 +124,12 @@ theme.border_normal = "#0000000F"
 
 -- BORDA FOCUS
 --theme.border_focus  = "#88c0d0"
---theme.border_focus = "#848487" -- Gray
+theme.border_focus = "#848487" -- Gray
 
 --theme.border_focus = "#7ACCD7"
 --theme.border_focus  = "#535d6F" -- PADRAO
 --theme.border_focus  = "#31C0F6"--dracula
-theme.border_focus  = "#b4f9f8" --TokyoNight
+--theme.border_focus  = "#b4f9f8" --TokyoNight
 --theme.border_focus  = "#52C647"-- Dracula green
 --theme.border_focus  = "#FF79C6" --dracula
 --theme.border_focus  = "#00C4F0"
@@ -153,7 +157,7 @@ theme.border_marked = "#91231c" --TokyoNight
 --theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
 
 ---- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(0)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal1)
 theme.taglist_squares_unsel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
 
@@ -166,7 +170,6 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_sel(taglist_square_si
 --local taglist_circle_size = dpi(5)
 --theme.taglist_squares_sel = theme_assets.taglist_circles_sel(taglist_circle_size, theme.fg_normal)
 --theme.taglist_squares_unsel = theme_assets.taglist_circles_unsel(taglist_circle_size, theme.fg_normal)
-
 
 
 -- Variables set for theming notifications:
@@ -192,7 +195,6 @@ theme.menu_width = dpi(100)
 
 theme.titlebar_close_button_focus  = themes_path.."default/titlebar/5.png"
 
---
 theme.titlebar_minimize_button_normal = themes_path.."default/titlebar/minimize_normal.png"
 theme.titlebar_minimize_button_focus  = themes_path.."default/titlebar/minimize_focus.png"
 
@@ -210,9 +212,6 @@ theme.titlebar_sticky_button_normal_inactive = themes_path.."default/titlebar/st
 theme.titlebar_sticky_button_focus_inactive  = themes_path.."default/titlebar/sticky_focus_inactive.png"
 theme.titlebar_sticky_button_normal_active = themes_path.."default/titlebar/sticky_normal_active.png"
 theme.titlebar_sticky_button_focus_active  = themes_path.."default/titlebar/sticky_focus_active.png"
-
-
-
 
 
 

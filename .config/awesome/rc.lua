@@ -34,130 +34,194 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "fp/theme.lua")
 ---------------------------- MODE_FLOATING ---------------------------
 ----------------------------------------------------------------------
 
-awful.rules.rules = {
--- Função para executar sempre que uma nova janela (cliente) for criada
+client.connect_signal("manage", function (c)
+    -- Apps específicos que devem ser flutuantes
+    local float_instances = {
+        gl = true,
+        PenTablet = true,
+        nitrogen = true,
+        xpad = true,
+        spotify = true,
+        pulsemixer = true,
+        easyeffects = true,
+        pavucontrol = true,
+        rhythmbox = true,
+        vlc = true,
+        ["blueman-manager"] = true,
+        ["color-picker"] = true,
+        iriunwebcam = true,
+        localsend_app = true,
+        amberol = true,
+        Inkspace = true,
+        flameshot = true,
+        Alacritty = true,
+    }
 
-    client.connect_signal("manage", function (c)
-        -- Applicativos flutuantes
-        
-        if c.instance == "gl" then --mpv
-            c.floating = true
-        end
+    if float_instances[c.instance] then
+        c.floating = true
+    else
+        c.floating = false -- ← ISSO GARANTE QUE O RESTO NÃO SEJA FLUTUANTE
+    end
 
-        if c.instance == "PenTablet" then --mpv
-            c.floating = true
-        end
+    -- Centralização opcional
+    -- (sugiro manter essa parte como está, pois não interfere no modo flutuante)
+    local exclude_classes = {
+        "gimp", "spotify", "xpad", "blueman-manager", "tilix", "discord",
+        "color-picker", "iriumwebcam", "amberol", "org.inkscape.Inkscape",
+        "Inkscape"
+    }
 
-        if c.instance == "nitrogen" then
-            c.floating = true
-        end
-
-        if c.instance == "xpad" then
-            c.floating = true
-        end
-
-        if c.instance == "spotify" then
-            c.floating = true
-        end
-
-        if c.instance == "pulsemixer" then
-            c.floating = true
-        end
-
-        if c.instance == "easyeffects" then
-            c.floating = true
-        end
-
-        if c.instance == "pavucontrol" then
-            c.floating = true
-        end
-
-        if c.instance == "rhythmbox" then
-            c.floating = true
-        end
-
-        if c.instance == "vlc" then
-            c.floating = true
-        end
-
-        if c.instance == "blueman-manager" then
-            c.floating = true
-        end
-
-        if c.instance == "color-picker" then
-            c.floating = true
-        end
-
-        if c.instance == "iriunwebcam" then
-            c.floating = true
-        end
-
-        if c.instance == "localsend_app" then
-            c.floating = true
-        end
-
-        if c.instance == "amberol" then
-            c.floating = true
-        end
-
-        if c.instance == "Inkspace" then
-            c.floating = true
-        end
-
-        if c.instance == "flameshot" then
-            c.floating = true
-        end
-
-        if c.instance == "Alacritty" then
-            c.floating = true
-        end
-
-
-        -- PARA CENTRALIZAR OS APPS, EXCLUA DA LISTA ABAIXO
-        local exclude_classes = {
-                -- Adicione outras classes ou instâncias que deseja excluir
-               "gimp",       -- Nome da classe do GIMP
-               "spotify",    -- Nome da instância do Spotify
-               "xpad",
-               --"nitrogen",
-               "blueman-manager",
-               "tilix",
-               "discord",
-               "color-picker",
-               "iriumwebcam",
-               "amberol",
-               "org.inkscape.Inkscape",
-               "Inkscape",
-               --"Alacritty",
-        }
-
-        -- Função para verificar se a classe ou instância do cliente está na lista de exclusão
-        local function is_excluded(client)
-            for _, exclude_class in ipairs(exclude_classes) do
-                if client.class == exclude_class or client.instance == exclude_class then
-                    return true
-                end
+    local function is_excluded(client)
+        for _, exclude_class in ipairs(exclude_classes) do
+            if client.class == exclude_class or client.instance == exclude_class then
+                return true
             end
-            return false
         end
+        return false
+    end
 
-        -- Verifica se o cliente deve ser excluído da centralização
-        if not is_excluded(c) then
-            local screen = awful.screen.focused()
-            local workarea = screen.workarea
-            local width = c.width
-            local height = c.height
+    if not is_excluded(c) then
+        local screen = awful.screen.focused()
+        local workarea = screen.workarea
+        local width = c.width
+        local height = c.height
 
-            c:geometry({
-                x = workarea.x + (workarea.width - width) / 2,
-                y = workarea.y + (workarea.height - height) / 2,
-                width = width,
-                height = height
-            })
-        end
+        c:geometry({
+            x = workarea.x + (workarea.width - width) / 2,
+            y = workarea.y + (workarea.height - height) / 2,
+            width = width,
+            height = height
+        })
+    end
+end)
 
-    end)
-}
+
+
+
+--awful.rules.rules = {
+---- Função para executar sempre que uma nova janela (cliente) for criada
+--
+--    client.connect_signal("manage", function (c)
+--        -- Applicativos flutuantes
+--        
+--        if c.instance == "gl" then --mpv
+--            c.floating = true
+--        end
+--
+--        if c.instance == "PenTablet" then --mpv
+--            c.floating = true
+--        end
+--
+--        if c.instance == "nitrogen" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "xpad" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "spotify" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "pulsemixer" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "easyeffects" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "pavucontrol" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "rhythmbox" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "vlc" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "blueman-manager" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "color-picker" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "iriunwebcam" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "localsend_app" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "amberol" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "Inkspace" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "flameshot" then
+--            c.floating = true
+--        end
+--
+--        if c.instance == "Alacritty" then
+--            c.floating = true
+--        end
+--
+--
+--        -- PARA CENTRALIZAR OS APPS, EXCLUA DA LISTA ABAIXO
+--        local exclude_classes = {
+--                -- Adicione outras classes ou instâncias que deseja excluir
+--               "gimp",       -- Nome da classe do GIMP
+--               "spotify",    -- Nome da instância do Spotify
+--               "xpad",
+--               --"nitrogen",
+--               "blueman-manager",
+--               "tilix",
+--               "discord",
+--               "color-picker",
+--               "iriumwebcam",
+--               "amberol",
+--               "org.inkscape.Inkscape",
+--               "Inkscape",
+--               --"Alacritty",
+--        }
+--
+--        -- Função para verificar se a classe ou instância do cliente está na lista de exclusão
+--        local function is_excluded(client)
+--            for _, exclude_class in ipairs(exclude_classes) do
+--                if client.class == exclude_class or client.instance == exclude_class then
+--                    return true
+--                end
+--            end
+--            return false
+--        end
+--
+--        -- Verifica se o cliente deve ser excluído da centralização
+--        if not is_excluded(c) then
+--            local screen = awful.screen.focused()
+--            local workarea = screen.workarea
+--            local width = c.width
+--            local height = c.height
+--
+--            c:geometry({
+--                x = workarea.x + (workarea.width - width) / 2,
+--                y = workarea.y + (workarea.height - height) / 2,
+--                width = width,
+--                height = height
+--            })
+--        end
+--
+--    end)
+--}
 
 
 
@@ -451,7 +515,7 @@ watch("acpi -i", 30, update_battery, battery_widget1)
 mytextclock = wibox.widget.textclock("%a %e %b %H:%M ", 1)
 
 local cw = calendar_widget({
-    theme = 'nord', --default ,nord, dark, tokyonight
+    theme = 'dark', --default ,nord, dark, tokyonight
     placement = 'center', --'top_right', --bottom, bottom_right, center, top_right
     start_sunday = false,
     radius = 7,
@@ -587,7 +651,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({" www "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
         --awful.tag({" 1-Web "," 2-Term "," 3-Files "," 4-Others "}, s, awful.layout.layouts[1])
         --awful.tag({"   www ","   term ","   docs ","   media ", "   [*] "}, s, awful.layout.layouts[1])
-        awful.tag({" www "," cli "," docs "," * "}, s, awful.layout.layouts[1])
+        --awful.tag({" www "," * "," cli "," docs "," media "}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({"  ","  ","  ","  ","  ","  ",}, s, awful.layout.layouts[1])
         --awful.tag({" 󰈿 "," 󰈿 "," 󰈿 ",}, s, awful.layout.layouts[1])
@@ -598,6 +662,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({"Web ","Code ","3 ","4 ","5 ","6 "}, s, awful.layout.layouts[1])
         --awful.tag({" 󰖟 -web ","  -code "," 󰽰-music ","  -files ",}, s, awful.layout.layouts[1])
         --awful.tag({"󰫶 󰖟 ","󱂉  ","󱂊 󰽰","󱂋  ",}, s, awful.layout.layouts[1])
+        awful.tag({"    ","    ","    ","    ",}, s, awful.layout.layouts[1])
+        --awful.tag({"    ","    ","    ","  󰀻  ",}, s, awful.layout.layouts[1])
 
         -- Each screen has its own tag table.
         -- Create a promptbox for each screen
@@ -806,8 +872,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     s.mylayoutbox,space,
                     --mylauncher,sep3,
                     --sep,sep1,sep,
-                    s.mytaglist,
-                    --s.mytasklist,
+                    s.mytaglist,sep,
+                    s.mytasklist,
                     sep,
                     --cpu1.widget, cpu_hz,
                     --sep,
@@ -846,7 +912,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     sep,
                     --memwidget,
                     mem_widget1,
-                    mem_1,
+                    --mem_1,
                     sep,
                     fsroothome,
                     --cpu1.widget, cpu_hz,
@@ -996,17 +1062,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Control"  },   "d",    function () awful.spawn("alacritty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
              {description = "Combine Sink", group = "Custom"}),
 
-    
-    awful.key({ modkey1, }, "p", function()  awful.spawn.with_shell(" kitty -e /home/filipe/.config/scripts/toggle_monitors.sh") end,
-            {description = "Alternar monitores", group = "custom"}),
-    
+    --awful.key({ modkey1, }, "p", function()  awful.spawn.with_shell(" kitty -e /home/filipe/.config/scripts/toggle_monitors.sh") end,
+            --{description = "Alternar monitores", group = "custom"}),
 
     awful.key({ modkey1,            },   "c",    function () awful.spawn("alacritty -e /home/filipe/.config/scripts/qalc-term.sh") end,
              {description = "Rofi-apps", group = "Custom"}),
 
     awful.key({ "Control",         },   "space",    function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
              {description = "Rofi-apps", group = "Custom"}),
-    
     awful.key({ modkey,        },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
             {description = "Rofi-switch-apps", group = "Custom"}),
 
@@ -1023,11 +1086,6 @@ globalkeys = gears.table.join(
             {description = "Power-menu.sh", group = "Custom"}),
     awful.key({ modkey         },   "u",        function () awful.spawn("/home/filipe/.config/scripts/wibar/autoupdate.sh") end,
             {description = "Check Updates", group = "Custom"}),
-    
-
-
-
-
 
     --REDSHIFT
     -- Aumentar a temperatura (mais fria)
@@ -1044,8 +1102,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey1 }, "r", function()
         reset_temp()
     end, {description = "Restaurar temperatura padrão", group = "Custom"}),
-
-
 
 
     --Volume
@@ -1399,6 +1455,11 @@ globalkeys = gears.table.join(
 
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
+
+
+
+
+
     -- All clients will match this rule.
     { rule = {},
         properties = { placement = awful.placement.centered,
@@ -1413,6 +1474,39 @@ awful.rules.rules = {
                        placement = awful.placement.no_overlap+awful.placement.no_offscreen
         }
     },
+
+
+
+
+
+
+{
+    rule_any = {
+        class = { "Google-chrome", "google-chrome", "Chromium-browser" }
+    },
+    properties = {
+        floating = false,
+        -- você pode adicionar outras propriedades se quiser:
+        -- tag = "2",
+        -- maximized = true,
+    }
+},
+
+
+{
+    rule_any = {
+        instance = { "^crx_." },  -- substitua pelo valor real do seu app
+        class = { "Google-chrome", "google-chrome", "Chromium-browser" },
+    },
+    properties = {
+        floating = false,
+        placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+    }
+},
+
+
+
+
 
 ---- Forçar todos Chrome Apps a não flutuarem
 --    {
@@ -1440,23 +1534,22 @@ awful.rules.rules = {
         }
     },
 
---FIX TAG
+--FIXTAG
   -- Firefox na tag 2 da tela principal
-
-
-    {
-        rule = { class = "Google-chrome"},
-        properties = {
-            tag = " www ",
-            screen = 1,
-            switch_to_tags = true
-        }
-    },
+    --{
+    --    rule = { class = "Google-chrome"},
+    --    properties = {
+    --        floating = false,
+    --        tag = "    ",
+    --        screen = 1,
+    --        switch_to_tags = true
+    --    }
+    --},
 
     {
         rule = { class = "kitty"},
         properties = {
-            tag = " cli ",
+            tag = "    ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1465,21 +1558,32 @@ awful.rules.rules = {
     {
         rule = { class = "Thunar"},
         properties = {
-            tag = " docs ",
+            tag = "    ",
             screen = 1,
             switch_to_tags = true
         }
     },
+
 
     {
-        rule = { class = "Chromium"},
+        rule_any = {
+            class = { "discord", "Nitrogen","obsidian" }
+        },
         properties = {
-            tag = " * ",
+            tag = "    ",
             screen = 1,
             switch_to_tags = true
         }
     },
 
+    --{
+    --    rule = { class = "discord",},
+    --    properties = {
+    --        tag = "    ",
+    --        screen = 1,
+    --        switch_to_tags = true
+    --    }
+    --},
 
 
     -- Floating clients.

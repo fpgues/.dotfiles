@@ -6,9 +6,9 @@
 
 * {
     //font:   "UbuntoSans Nerd Font 12";
-    font:   "VictorMono             Bold 10";
-    //font:      "ProggyClean CE Nerd Font   Regular 12";
-    
+    //font:   "VictorMono             Bold 10";
+    //font:   "ProggyClean CE Nerd Font    12";
+    font:      "FantasqueSansMNerdFont     Regular 14";
 
     bg0:    #282C34;
     //bg0:    #1C2529;
@@ -40,7 +40,8 @@ window {
 }
 
 inputbar {
-    font:      "ProggyClean CE Nerd Font   Regular 12";
+    font:      "FantasqueSansMNerdFont     Regular 14";
+    //font:      "ProggyClean CE Nerd Font   Regular 12";
     //font:   "VictorMono             Bold 10";
     //font:       "UbuntoSans Nerd Font 12";
     padding:    0px;

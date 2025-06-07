@@ -1532,7 +1532,7 @@ awful.rules.rules = {
         rule = { class = "Google-chrome"},
         properties = {
             floating = false,
-            tag = " ",
+            tag = "󰖟 ",
             screen = 1,
             switch_to_tags = true
         }

@@ -1,6 +1,3 @@
-
-
-
 ----------------------------------------------------------
 -- Default awesome theme ---------------------------------
 ----------------------------------------------------------
@@ -13,7 +10,7 @@ local theme = {}
 
 --theme.font          = "Sans                Regular 10"
 --theme.font          = "ConsolaMono                Regular 10"
-theme.font          = "FantasqueSansMNerdFont     Regular 12"
+theme.font          = "FantasqueSansMNerdFont     Regular 14"
 --theme.font          = "FiraCode Nerd Font         SemiBold 8"
 --theme.font          = "GohuFont11NerdFont         Regular 12"
 --theme.font          = "InconsolataNerdFont        Regular 12"
@@ -37,7 +34,7 @@ theme.font          = "FantasqueSansMNerdFont     Regular 12"
 --theme.bg_normal     = "#2C2C2CAF"  --Orchis-dark
 
 --theme.bg_normal     = "#00000000"
-theme.bg_normal = "#1F2329DF" --igual kitty
+theme.bg_normal = "#1F2329" --igual kitty
 --theme.bg_normal  = "#644540"
 --theme.bg_normal  = "#1B443C"
 --theme.bg_normal  = "#282C34" --onedark
@@ -66,9 +63,9 @@ theme.bg_normal = "#1F2329DF" --igual kitty
 --TAGLISTCOLOR
 --theme.bg_focus      = "#8a8ea8" -- #e9befb" --"#db93f9" --"#535d6c"
 --theme.bg_focus = "#282c340F"
-theme.bg_focus = "#ffffff00"
+--theme.bg_focus = "#ffffff00"
 --theme.bg_focus      = "#535d6c"
---theme.bg_focus      = "#1F2329"
+theme.bg_focus      = "#1F2329"
 --theme.bg_focus      = "#2b2e3b"
 
 
@@ -84,12 +81,14 @@ theme.bg_minimize = "#000000"
 --COLOR DOT
 --theme.fg_normal1 = "#88c0d0"
 theme.fg_normal1 = "#ff5555"
+theme.fg_normal11 = "#ffffff8F"
+theme.fg_normal111 = "#ffffff00"
 --theme.fg_normal1 = "#FFFFFF"
 ----------------------------------------------------------
 ------------COLOR-FONT------------------------------------
 ----------------------------------------------------------
 --theme.fg_normal     = "#aaaaaa" --standard
-theme.fg_normal = "#fffff1"
+theme.fg_normal = "#ffffff"
 --theme.fg_normal     = "#ffffffCF"
 --theme.fg_normal     = "#000000"
 --theme.fg_normal     = "#CFD2C6"
@@ -152,24 +151,20 @@ theme.border_marked = "#91231c" --TokyoNight
 --theme.taglist_bg_focus = "#ff0000"
 
 ------ Generate taglist squares:
---local taglist_square_size = dpi(4)
---theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal1)
---theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
+local taglist_square_size = dpi(0)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal11)
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal11)
 
 ---- Generate taglist squares:
-local taglist_square_size = dpi(0)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal1)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
+--local taglist_square_size = dpi(10)
+--theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal1)
+--theme.taglist_squares_unsel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
 
 
 
 
 
 
-
---local taglist_circle_size = dpi(5)
---theme.taglist_squares_sel = theme_assets.taglist_circles_sel(taglist_circle_size, theme.fg_normal)
---theme.taglist_squares_unsel = theme_assets.taglist_circles_unsel(taglist_circle_size, theme.fg_normal)
 
 
 -- Variables set for theming notifications:

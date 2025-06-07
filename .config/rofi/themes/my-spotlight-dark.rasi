@@ -10,8 +10,9 @@
     //font:      "JetBrainsMono Nerd Font    Bold 10";
     //font:      "ProggyClean CE Nerd Font   Regular 12";
     font:   "VictorMono             Bold 12";
-    //bg0:    #111d20;
-    bg0:      #550101;
+    bg:    #D54C4D;
+    bg0:    #1F2329;
+    //bg0:      #550101;
     //bg0:      #263238CF;
     //bg0:    #1b1e22;
     //bg1:    #7E7E7E80;
@@ -23,6 +24,7 @@
     fg0:    #DEDEDE;
     fg1:    #FFFFFF;
     fg2:    #DEDEDE80;
+    fg4:    #D54C4D;
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -81,12 +83,12 @@ listview {
     columns:    1;
 
     fixed-height:   false;
-    border:         1px 0 0;
+    border:         0px 0 0;
     border-color:   @bg1;
 }
 
 element {
-    padding:            8px 16px;
+    padding:            4px 16px;
     spacing:            1px;
     background-color:   transparent;
 }
@@ -96,8 +98,8 @@ element normal active {
 }
 
 element selected normal, element selected active {
-    background-color:   @bg2;
-    text-color:         @fg1;
+    background-color:   @bg00;
+    text-color:         @fg4;
 }
 
 element-icon {

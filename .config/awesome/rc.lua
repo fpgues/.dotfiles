@@ -41,6 +41,7 @@ client.connect_signal("manage", function (c)
         PenTablet = true,
         nitrogen = true,
         xpad = true,
+        --kitty = true,
         spotify = true,
         pulsemixer = true,
         easyeffects = true,
@@ -66,7 +67,7 @@ client.connect_signal("manage", function (c)
     -- Centralização opcional
     -- (sugiro manter essa parte como está, pois não interfere no modo flutuante)
     local exclude_classes = {
-        "gimp", "spotify", "xpad", "blueman-manager", "tilix", "discord",
+        "kitty", "gimp", "spotify", "xpad", "blueman-manager", "tilix", "discord",
         "color-picker", "iriumwebcam", "amberol", "org.inkscape.Inkscape",
         "Inkscape"
     }
@@ -333,13 +334,13 @@ fs_widget = wibox.widget.textbox("FS:")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile.left,
+    awful.layout.suit.tile,
+    --awful.layout.suit.tile.left,
     awful.layout.suit.floating,
     --awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
 
     lain.layout.termfair,
-    --awful.layout.suit.tile,
     --awful.layout.suit.tile.top,
 
     --lain.layout.termfair.center,
@@ -516,7 +517,7 @@ mytextclock = wibox.widget.textclock("%a %e %b %H:%M ", 1)
 
 local cw = calendar_widget({
     theme = 'dark', --default ,nord, dark, tokyonight
-    placement = 'center', --'top_right', --bottom, bottom_right, center, top_right
+    placement = 'top_right', --'top_right', --bottom, bottom_right, center, top_right
     start_sunday = false,
     radius = 7,
     -- with customized next/previous (see table above)
@@ -662,7 +663,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({"Web ","Code ","3 ","4 ","5 ","6 "}, s, awful.layout.layouts[1])
         --awful.tag({" 󰖟 -web ","  -code "," 󰽰-music ","  -files ",}, s, awful.layout.layouts[1])
         --awful.tag({"󰫶 󰖟 ","󱂉  ","󱂊 󰽰","󱂋  ",}, s, awful.layout.layouts[1])
-        awful.tag({"    ","    ","    ","    ",}, s, awful.layout.layouts[1])
+        awful.tag({"󰖟 ","󱨧 "," "," "," ",}, s, awful.layout.layouts[1])
+        --awful.tag({"    ","    ","    ","    ",}, s, awful.layout.layouts[1])
         --awful.tag({"    ","    ","    ","  󰀻  ",}, s, awful.layout.layouts[1])
 
         -- Each screen has its own tag table.
@@ -800,8 +802,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         -- Create a tasklist widget
         s.mytasklist = awful.widget.tasklist {
             screen  = s,
-            --filter  = awful.widget.tasklist.filter.focused,
-            filter  = awful.widget.tasklist.filter.currenttags,
+            filter  = awful.widget.tasklist.filter.focused,
+            --filter  = awful.widget.tasklist.filter.currenttags,
             buttons = tasklist_buttons,
             style = {
                 shape = gears.shape.rounded_rect,
@@ -832,7 +834,12 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --id     = "background_role",
                     widget = wibox.container.background,
                 },
-                widget = wibox.container.margin,
+                --widget = wibox.container.margin,
+                widget  = wibox.container.constraint,
+                width   = 400, --tamanho máximo do nome
+          
+
+
             },
         }
 
@@ -852,7 +859,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
         --settings wibar
         --s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, visible = true, height = 22, width = s.geometry.width, })
-        s.mywibox = awful.wibar({ position = top, opacity = 1, screen = s, height = 19, width = s.geometry.width, })
+        s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, height = 20, width = s.geometry.width, })
         --s.mywibox = awful.wibar({ position = "bottom", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
 
 
@@ -875,12 +882,23 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     s.mytaglist,sep,
                     s.mytasklist,
                     sep,
+                    --name1,
                     --cpu1.widget, cpu_hz,
                     --sep,
                     --ram_widget(),
                     --mem1,
                     --sep,
                     sep,
+                    space,space,space,
+                    space,space,space,
+                    space,space,space,
+                    space,space,space,
+                    space,space,space,
+                    space,space,space,
+                    space,space,space,
+                    space,space,space,
+                    space,space,space,
+                    space,space,space,
                     spotify_widget({
                             --font = "FantasqueSansMNerdFont     Regular 12"
                             --font = "Victor Mono  Bold 10"
@@ -895,7 +913,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     layout = wibox.layout.flex.horizontal,
                     --s.mytasklist,
                     --s.mytaglist,
-                    mytextclock,
+
+                    --mytextclock,
                 },
 
                 { -- Right widgets
@@ -939,8 +958,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --widget_typeifi_widget,
                     --memwidget,
                     --cpuwidget,
-                    --mytextclock,
-
                     sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     --sep,
@@ -950,6 +967,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --mykeyboardlayout,
                     space,
                     logout_menu_widget(),
+                    sep,
+                    mytextclock,
                 },
             }
 
@@ -1016,66 +1035,52 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 globalkeys = gears.table.join(
 
     -- Standard Program
-    awful.key({ modkey,           }, "F1" , function () awful.spawn(browser) end,
+    awful.key({ modkey1,           }, "1" , function () awful.spawn(browser) end,
             {description = "open a browser", group = "launcher"}),
-    awful.key({ modkey,           }, "F2" , function () awful.spawn(fm) end,
+    awful.key({ modkey1,           }, "2" , function () awful.spawn(fm) end,
             {description = "open a file manager", group = "launcher"}),
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
             {description = "open a terminal", group = "launcher"}),
-
     awful.key({ modkey1,  }, "l", function () awful.spawn('i3lock -c 000000') end,
             {description = "open a terminal", group = "launcher"}),
-
-
     --awful.key({ modkey1,          }, "l", function () awful.spawn('gdmflexiserver --lock') end,
     --        {description = "Lockscreen", group = "Custom"}),
-
     --awful.key({ modkey, "Control"  }, "l", function () awful.spawn('xscreensaver-command -l') end,
             --{description = "open a terminal", group = "launcher"}),
     awful.key({ modkey1,          }, "BackSpace", awesome.restart,
             {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey1, "Shift"   }, "q", awesome.quit,
             {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey         },   "a",    function () awful.spawn("alacritty -e pulsemixer") end,
+    awful.key({ modkey1,         },   "a",    function () awful.spawn("alacritty -e pulsemixer") end,
             {description = "Exec pulsemixer", group = "Custom"}),
-    awful.key({ modkey         },   "b",    function () awful.spawn("blueman-manager") end,
+    awful.key({ modkey1,         },   "b",    function () awful.spawn("blueman-manager") end,
             {description = "Exec pulsemixer", group = "Custom"}),
-
-    awful.key({ modkey,         },  "s",    function () awful.spawn("kitty -e ranger") end,
+    awful.key({ modkey1,         },  "s",    function () awful.spawn("kitty -e ranger") end,
             {descrption = "Open ranger", group = "Custom"}),
-
     --awful.key({ modkey,         },  "a",    function () awful.spawn("kitty -e /home/filipe/.dotfiles/.config/ranger/rangerdownloads.sh") end,
     --        {descrption = "Open ranger", group = "Custom"}),
-
     awful.key({ modkey,         },  "o",    function () awful.spawn("xpad -s") end,
             {descrption = "show xpad", group = "personal launchers"}),
     awful.key({ modkey,         },  "k",    function () awful.spawn("xpad -h") end,
             {descrption = "Hide Xpad", group = "Custom"}),
     awful.key({ modkey, "Control"      },  "n",    function () awful.spawn("xpad -n") end,
             {descrption = "New Xpad", group = "Custom"}),
-
     --awful.key({ modkey,         },   "l",    function () awful.spawn("rofi -show calc -modi calc -no-show-match -no-sort -no-persist-history ") end,
     --         {description = "Rofi-apps", group = "Custom"}),
     --awful.key({ modkey,         },   "l",    function () awful.spawn("tilix -e qalc") end,
     --         {description = "Rofi-apps", group = "Custom"}),
-
     awful.key({ modkey, "Control"  },   "d",    function () awful.spawn("alacritty -e pactl load-module module-combine-sink sink_name=COMBINED_SINK && exit") end,
              {description = "Combine Sink", group = "Custom"}),
-
     --awful.key({ modkey1, }, "p", function()  awful.spawn.with_shell(" kitty -e /home/filipe/.config/scripts/toggle_monitors.sh") end,
             --{description = "Alternar monitores", group = "custom"}),
-
     awful.key({ modkey1,            },   "c",    function () awful.spawn("alacritty -e /home/filipe/.config/scripts/qalc-term.sh") end,
              {description = "Rofi-apps", group = "Custom"}),
-
     awful.key({ "Control",         },   "space",    function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
              {description = "Rofi-apps", group = "Custom"}),
     awful.key({ modkey,        },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
             {description = "Rofi-switch-apps", group = "Custom"}),
-
     awful.key({ modkey, "Control"  },   "c",      function () awful.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command ' Exec ' ") end,
             {description = "Rofi-greenclip", group = "Custom"}),
-
     awful.key({ modkey         },   "t",      function () awful.spawn("kitty -e htop") end,
             {description = "Open htop", group = "Custom"}),
     awful.key({ modkey         },   "r",        function () awful.spawn("/home/filipe/.config/scripts/rofi/rofi-files") end,
@@ -1188,9 +1193,9 @@ globalkeys = gears.table.join(
             {description = "focus previous by index", group = "client"}),
 
 
-    awful.key({ modkey,          }, "Left", function () awful.client.focus.byidx(1) end,
+    awful.key({ modkey,          }, "Right", function () awful.client.focus.byidx(1) end,
             {description = "focus previous by index", group = "client"}),
-    awful.key({ modkey,          }, "Right", function () awful.client.focus.byidx(-1) end,
+    awful.key({ modkey,          }, "Left", function () awful.client.focus.byidx(-1) end,
             {description = "focus previous by index", group = "client"}),
 
 
@@ -1210,10 +1215,10 @@ globalkeys = gears.table.join(
             {description = "decrease master width factor", group = "layout"}),
 
 
-    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( -0.05) end,
+    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact(0.05) end,
             {description = "increase master width factor", group = "layout"}),
 
-    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(0.05) end,
+    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(-0.05) end,
             {description = "decrease master width factor", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "Down", function () awful.client.incwfact(-0.05) end,
@@ -1478,8 +1483,6 @@ awful.rules.rules = {
 
 
 
-
-
 {
     rule_any = {
         class = { "Google-chrome", "google-chrome", "Chromium-browser" }
@@ -1492,17 +1495,6 @@ awful.rules.rules = {
     }
 },
 
-
-{
-    rule_any = {
-        instance = { "^crx_." },  -- substitua pelo valor real do seu app
-        class = { "Google-chrome", "google-chrome", "Chromium-browser" },
-    },
-    properties = {
-        floating = false,
-        placement = awful.placement.no_overlap + awful.placement.no_offscreen,
-    }
-},
 
 
 
@@ -1536,20 +1528,20 @@ awful.rules.rules = {
 
 --FIXTAG
   -- Firefox na tag 2 da tela principal
-    --{
-    --    rule = { class = "Google-chrome"},
-    --    properties = {
-    --        floating = false,
-    --        tag = "    ",
-    --        screen = 1,
-    --        switch_to_tags = true
-    --    }
-    --},
+    {
+        rule = { class = "Google-chrome"},
+        properties = {
+            floating = false,
+            tag = " ",
+            screen = 1,
+            switch_to_tags = true
+        }
+    },
 
     {
         rule = { class = "kitty"},
         properties = {
-            tag = "    ",
+            tag = " ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1558,7 +1550,7 @@ awful.rules.rules = {
     {
         rule = { class = "Thunar"},
         properties = {
-            tag = "    ",
+            tag = " ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1567,23 +1559,27 @@ awful.rules.rules = {
 
     {
         rule_any = {
-            class = { "discord", "Nitrogen","obsidian" }
+            class = { "discord", "Nitrogen","obsidian","chromium" }
         },
         properties = {
-            tag = "    ",
+            tag = " ",
             screen = 1,
             switch_to_tags = true
         }
     },
 
-    --{
-    --    rule = { class = "discord",},
-    --    properties = {
-    --        tag = "    ",
-    --        screen = 1,
-    --        switch_to_tags = true
-    --    }
-    --},
+
+    {
+        rule = { class = "crx_hnpfjngllnobngcgfapefoaidbinmjnm" },
+        properties = {
+            tag = "󱨧 ",
+            screen = 1,
+    }
+    },
+
+
+
+
 
 
     -- Floating clients.
@@ -1598,7 +1594,7 @@ awful.rules.rules = {
     ---INCLUIR PARA VIRAR FLOATING APPS
         class = {
           "Arandr",
-          --"kitty",
+          "kitty",
           "Blueman-manager",
           "Gpick",
           "Kruler",
@@ -1630,9 +1626,9 @@ awful.rules.rules = {
 
     -- BARRA DE TITULOS
     -- Add titlebars to normal clients and dialogs
-    --{ rule_any = {type = { "normal", "dialog" }
-    --  }, properties = { titlebars_enabled = true }
-    --},
+    { rule_any = {type = { "normal", "dialog" }
+      }, properties = { titlebars_enabled = true }
+    },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     { rule = { class = "Firefox" },
@@ -1643,8 +1639,8 @@ awful.rules.rules = {
 -- Regra para APPS DE TAMANHO FIXO
     {
         rule = { instance = "qalc-term" },
-            properties = { width = 200, height = 400 },
-            properties = { floating = true }
+            properties = { width = 200, height = 400 }
+            --properties = { floating = true }
     },
 
     {
@@ -1670,10 +1666,10 @@ awful.rules.rules = {
         properties = { maximized = false }
     },
 
-    --{
-    --    rule = { class = "Alacritty" },
-    --        properties = { width = 400, height = 200 }
-    --},
+    {
+        rule = { class = "Alacritty" },
+            properties = { width = 200, height = 200 }
+    },
 }
 
 ----------------------------------------------------------------------
@@ -1770,7 +1766,7 @@ client.connect_signal("unfocus", function(c)
 ---------------------------- GAPS ------------------------------------
 ----------------------------------------------------------------------
 
-beautiful.useless_gap = 4,
+beautiful.useless_gap = 6,
 
 --beautiful.gap_single_client   = false
 

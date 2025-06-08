@@ -837,7 +837,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 --widget = wibox.container.margin,
                 widget  = wibox.container.constraint,
                 width   = 400, --tamanho máximo do nome
-          
 
 
             },
@@ -876,7 +875,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
                     --s.mylayoutbox,sep,
-                    s.mylayoutbox,space,
+                    s.mylayoutbox,sep,
                     --mylauncher,sep3,
                     --sep,sep1,sep,
                     s.mytaglist,sep,
@@ -888,17 +887,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --ram_widget(),
                     --mem1,
                     --sep,
-                    sep,
-                    space,space,space,
-                    space,space,space,
-                    space,space,space,
-                    space,space,space,
-                    space,space,space,
-                    space,space,space,
-                    space,space,space,
-                    space,space,space,
-                    space,space,space,
-                    space,space,space,
                     spotify_widget({
                             --font = "FantasqueSansMNerdFont     Regular 12"
                             --font = "Victor Mono  Bold 10"

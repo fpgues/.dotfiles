@@ -27,9 +27,9 @@ rofi_command="rofi -theme ~/.local/share/rofi/themes/my-spotlight-dark.rasi"
 
 ## options
 shutdown="  shutdown"
-reboot="  reboot"
-logout="  logout"
-lock="  lock"
+reboot="   reboot"
+logout="   logout"
+lock="    lock"
 
 # options
 #shutdown="  "

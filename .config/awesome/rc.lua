@@ -1547,7 +1547,7 @@ awful.rules.rules = {
 
     {
         rule_any = {
-            class = { "discord", "Nitrogen","obsidian","chromium" }
+            class = { "discord", "Nitrogen","obsidian","chromium", }
         },
         properties = {
             tag = " ",
@@ -1558,7 +1558,7 @@ awful.rules.rules = {
 
 
     {
-        rule = { class = "crx_hnpfjngllnobngcgfapefoaidbinmjnm" },
+        rule = { class = "null" },
         properties = {
             tag = "󱨧 ",
             screen = 1,

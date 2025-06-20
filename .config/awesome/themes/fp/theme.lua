@@ -56,7 +56,7 @@ theme.bg_normal = "#1F2329" --igual kitty
 --theme.bg_normal     = "#2E1643"
 --theme.bg_normal     = "#864087"
 --theme.bg_normal     = "#060817"
---theme.bg_normal     = "#000000"
+theme.bg_normal     = "#000000"
 ---------------------------------------------------------
 ----------------------------------------------------------
 ----------------------------------------------------------
@@ -67,6 +67,7 @@ theme.bg_normal = "#1F2329" --igual kitty
 --theme.bg_focus      = "#535d6c"
 theme.bg_focus      = "#1F2329"
 --theme.bg_focus      = "#2b2e3b"
+theme.bg_focus      = "#000000"
 
 
 theme.bg_urgent = "#ff0000"
@@ -111,7 +112,7 @@ theme.fg_minimize = "#ffffff"
 ----------------------------------------------------------
 ----------------------------------------------------------
 theme.useless_gap = dpi(0)
-theme.border_width = dpi(1)
+theme.border_width = dpi (2)
 
 --BORDA DAS JANELAS
 --theme.border_normal  = "#848487" -- Gray
@@ -122,8 +123,8 @@ theme.border_normal = "#0000000F"
 
 
 -- BORDA FOCUS
---theme.border_focus  = "#88c0d0"
-theme.border_focus = "#848487" -- Gray
+theme.border_focus  = "#88c0d0"
+--theme.border_focus = "#848487" -- Gray
 
 --theme.border_focus = "#7ACCD7"
 --theme.border_focus  = "#535d6F" -- PADRAO

@@ -24,7 +24,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="my3"
 #ZSH_THEME="my4" #ohmybash
 #ZSH_THEME="my5" #ohmybash
-#ZSH_THEME="gentoo"
+ZSH_THEME="gentoo"
 #ZSH_THEME="eastwood"
 #ZSH_THEME="clean"
 #ZSH_THEME="kafeitu"
@@ -190,8 +190,7 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 #
 #
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#source ~/powerlevel10k/powerlevel10k.zsh-theme
+#
+## To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -1037,13 +1037,13 @@ globalkeys = gears.table.join(
             --{description = "open a terminal", group = "launcher"}),
     awful.key({ modkey1,          }, "BackSpace", awesome.restart,
             {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey1, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
             {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey1,         },   "a",    function () awful.spawn("alacritty -e pulsemixer") end,
+    awful.key({ modkey,         },   "a",    function () awful.spawn("alacritty -e pulsemixer") end,
             {description = "Exec pulsemixer", group = "Custom"}),
-    awful.key({ modkey1,         },   "b",    function () awful.spawn("blueman-manager") end,
+    awful.key({ modkey,         },   "b",    function () awful.spawn("blueman-manager") end,
             {description = "Exec pulsemixer", group = "Custom"}),
-    awful.key({ modkey1,         },  "s",    function () awful.spawn("kitty -e ranger") end,
+    awful.key({ modkey,         },  "s",    function () awful.spawn("kitty -e ranger") end,
             {descrption = "Open ranger", group = "Custom"}),
     --awful.key({ modkey,         },  "a",    function () awful.spawn("kitty -e /home/filipe/.dotfiles/.config/ranger/rangerdownloads.sh") end,
     --        {descrption = "Open ranger", group = "Custom"}),
@@ -1612,11 +1612,11 @@ awful.rules.rules = {
     },
 
 
-    -- BARRA DE TITULOS
+    -- barra de títulos
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
-    },
+    --{ rule_any = {type = { "normal", "dialog" }
+    --  }, properties = { titlebars_enabled = true }
+    --},
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     { rule = { class = "Firefox" },

@@ -19,6 +19,7 @@ local vicious = require("vicious")
 local debian = require("debian.menu")
 local color = require("gears.color")
 local watch = require("awful.widget.watch")
+--local dock = require("widgets.dock")
 
 -- Inicialize a temperatura com um valor padrão
 local current_temp = 6500  -- Temperatura inicial (valor padrão)
@@ -663,7 +664,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({"Web ","Code ","3 ","4 ","5 ","6 "}, s, awful.layout.layouts[1])
         --awful.tag({" 󰖟 -web ","  -code "," 󰽰-music ","  -files ",}, s, awful.layout.layouts[1])
         --awful.tag({"󰫶 󰖟 ","󱂉  ","󱂊 󰽰","󱂋  ",}, s, awful.layout.layouts[1])
-        awful.tag({"󰖟 ","󱨧 "," "," "," ",}, s, awful.layout.layouts[1])
+        --awful.tag({"󰖟 ","󱨧 "," "," "," ",}, s, awful.layout.layouts[1])
+        awful.tag({" "," "," "," "," "}, s, awful.layout.layouts[1])
         --awful.tag({"    ","    ","    ","    ",}, s, awful.layout.layouts[1])
         --awful.tag({"    ","    ","    ","  󰀻  ",}, s, awful.layout.layouts[1])
 
@@ -859,7 +861,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --settings wibar
         --s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, visible = true, height = 22, width = s.geometry.width, })
         s.mywibox = awful.wibar({ position = "top", opacity = 1, screen = s, height = 20, width = s.geometry.width, })
-        --s.mywibox = awful.wibar({ position = "bottom", opacity = 1, screen = s, height = 19, width = s.geometry.width, })
+        --s.mywibox = awful.wibar({ position = "bottom", opacity = 0.9, screen = s, height = 20, width = s.geometry.width, })
 
 
         --systray.base_size = s.mywibox.height * 0.6
@@ -1471,6 +1473,7 @@ awful.rules.rules = {
 
 
 
+
 {
     rule_any = {
         class = { "Google-chrome", "google-chrome", "Chromium-browser" }
@@ -1483,6 +1486,21 @@ awful.rules.rules = {
     }
 },
 
+
+
+
+-- Regra para Latte Dock
+{
+    rule_any = { class = { "latte-dock", "Latte-dock", "Latte" } },
+    properties = {
+        border_width = 0,
+        floating = true,
+        ontop = true,
+        sticky = true,
+        skip_taskbar = true,
+        focusable = false
+    }
+},
 
 
 
@@ -1520,7 +1538,7 @@ awful.rules.rules = {
         rule = { class = "Google-chrome"},
         properties = {
             floating = false,
-            tag = "󰖟 ",
+            tag = " ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1557,13 +1575,24 @@ awful.rules.rules = {
     },
 
 
-    {
-        rule = { class = "null" },
+  {
+        rule_any = {
+            class = { "localsend_app","Localsend_app", }
+        },
         properties = {
-            tag = "󱨧 ",
+            tag = " ",
             screen = 1,
-    }
+            switch_to_tags = true
+        }
     },
+
+    --{
+    --    rule = { class = "null" },
+    --    properties = {
+    --        tag = "󱨧 ",
+    --        screen = 1,
+    --}
+    --},
 
 
 
@@ -1611,8 +1640,7 @@ awful.rules.rules = {
                    placement = awful.placement.centered }
     },
 
-
-    -- barra de títulos
+    -- barra de títulos #titlebar
     -- Add titlebars to normal clients and dialogs
     --{ rule_any = {type = { "normal", "dialog" }
     --  }, properties = { titlebars_enabled = true }
@@ -1837,6 +1865,6 @@ awful.spawn.with_shell("nm-applet")
 --awful.spawn.with_shell('flameshot') --bater print
 --awful.spawn.with_shell('cmst -m') --gerenciador de área de transferencia
 --awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
---awful.spawn.with_shell('localsend_app') --localsend
+awful.spawn.with_shell('localsend_app') --localsend
 --awful.spawn.with_shell('knotes')
 

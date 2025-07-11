@@ -35,8 +35,8 @@ theme.font          = "FantasqueSansMNerdFont     Regular 12"
 
 --theme.bg_normal     = "#00000000"
 --theme.bg_normal = "#005ACF"
---theme.bg_normal = "#1F2329" --igual kitty
-theme.bg_normal = "#000000" --igual kitty
+theme.bg_normal = "#1F2329" --igual kitty
+--theme.bg_normal = "#000000" --igual kitty
 --theme.bg_normal  = "#644540"
 --theme.bg_normal  = "#282C34" --onedark
 --theme.bg_normal  = "#1C2529"
@@ -65,7 +65,7 @@ theme.bg_normal = "#000000" --igual kitty
 --theme.bg_focus = "#282c340F"
 --theme.bg_focus = "#ffffff00"
 --theme.bg_focus      = "#535d6c"
-theme.bg_focus      = "#1F2329"
+theme.bg_focus      = "#1F2329" --igual kitty
 --theme.bg_focus      = "#000000"
 --theme.bg_focus      = "#2b2e3b"
 
@@ -112,7 +112,7 @@ theme.fg_minimize = "#ffffff"
 ----------------------------------------------------------
 ----------------------------------------------------------
 theme.useless_gap = dpi(0)
-theme.border_width = dpi (2)
+theme.border_width = dpi (1)
 
 --BORDA DAS JANELAS
 --theme.border_normal  = "#848487" -- Gray
@@ -192,9 +192,9 @@ theme.menu_width = dpi(100)
 
 --Define the image to load
 --theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"
---theme.titlebar_close_button_focus  = themes_path.."default/titlebar/close_focus.png"
+theme.titlebar_close_button_focus  = themes_path.."default/titlebar/close_focus.png"
 
-theme.titlebar_close_button_focus  = themes_path.."default/titlebar/5.png"
+--theme.titlebar_close_button_focus  = themes_path.."default/titlebar/5.png"
 
 theme.titlebar_minimize_button_normal = themes_path.."default/titlebar/minimize_normal.png"
 theme.titlebar_minimize_button_focus  = themes_path.."default/titlebar/minimize_focus.png"

@@ -19,7 +19,6 @@ local vicious = require("vicious")
 local debian = require("debian.menu")
 local color = require("gears.color")
 local watch = require("awful.widget.watch")
---local dock = require("widgets.dock")
 
 -- Inicialize a temperatura com um valor padrão
 local current_temp = 6500  -- Temperatura inicial (valor padrão)
@@ -27,8 +26,9 @@ local step_temp = 100      -- Incremento/decremento (mais suave)
 ----------------------------------------------------------------------
 ---------------------------- THEMES ----------------------------------
 ----------------------------------------------------------------------
-beautiful.init(gears.filesystem.get_themes_dir() .. "fp/theme.lua")
+--beautiful.init(gears.filesystem.get_themes_dir() .. "fp/theme.lua")
 --beautiful.init(gears.filesystem.get_themes_dir() .. "Nord/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/fp/theme.lua")
 
 
 ----------------------------------------------------------------------
@@ -39,6 +39,7 @@ client.connect_signal("manage", function (c)
     -- Apps específicos que devem ser flutuantes
     local float_instances = {
         gl = true,
+        ["xfce4-panel"] = true,
         PenTablet = true,
         nitrogen = true,
         xpad = true,
@@ -69,7 +70,7 @@ client.connect_signal("manage", function (c)
     -- (sugiro manter essa parte como está, pois não interfere no modo flutuante)
     local exclude_classes = {
         "kitty", "gimp", "spotify", "xpad", "blueman-manager", "tilix", "discord",
-        "color-picker", "iriumwebcam", "amberol", "org.inkscape.Inkscape",
+        "color-picker", "iriumwebcam", "amberol", "org.inkscape.Inkscape","Plank","Xfce4-panel","xfce4-panel",
         "Inkscape"
     }
 
@@ -336,8 +337,8 @@ fs_widget = wibox.widget.textbox("FS:")
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    --awful.layout.suit.tile.left,
     awful.layout.suit.floating,
+    --awful.layout.suit.tile.left,
     --awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
 
@@ -641,6 +642,15 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
     --Configs Wibar
     awful.screen.connect_for_each_screen(function(s)
+
+
+  --#### espaço para dock
+    s.padding = {
+        bottom = 55,
+    }
+
+
+
 
         -- Wallpaper
         --set_wallpaper(s)
@@ -1473,7 +1483,6 @@ awful.rules.rules = {
 
 
 
-
 {
     rule_any = {
         class = { "Google-chrome", "google-chrome", "Chromium-browser" }
@@ -1487,7 +1496,16 @@ awful.rules.rules = {
 },
 
 
-
+  -- Plank dock
+{ 
+    rule = { class = "Xfce4-panel" },
+    properties = {
+        ontop = true,
+        skip_taskbar = true,
+        focusable = false,
+        sticky = true
+    }
+},
 
 -- Regra para Latte Dock
 {
@@ -1502,10 +1520,6 @@ awful.rules.rules = {
     }
 },
 
-
-
-
-
 ---- Forçar todos Chrome Apps a não flutuarem
 --    {
 --        rule_any = {
@@ -1515,7 +1529,6 @@ awful.rules.rules = {
 --            floating = false
 --        }
 --    },
-
 
 -- Regras padrão (não remova)
     {
@@ -1531,6 +1544,7 @@ awful.rules.rules = {
             placement = awful.placement.no_overlap + awful.placement.no_offscreen
         }
     },
+
 
 --FIXTAG
   -- Firefox na tag 2 da tela principal
@@ -1562,7 +1576,6 @@ awful.rules.rules = {
         }
     },
 
-
     {
         rule_any = {
             class = { "discord", "Nitrogen","obsidian","chromium", }
@@ -1573,7 +1586,6 @@ awful.rules.rules = {
             switch_to_tags = true
         }
     },
-
 
   {
         rule_any = {
@@ -1620,6 +1632,9 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
+          "Plank",
+          "xfce4-panel",
+          "Xfce4-panel",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -1724,7 +1739,7 @@ client.connect_signal("manage", function (c)
 end)
 
 
--- TITLEBARS
+-- TITLEBARS/barradetitulos
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
@@ -1755,9 +1770,10 @@ client.connect_signal("request::titlebars", function(c)
         },
         { -- Right
             awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.stickybutton   (c),
             awful.titlebar.widget.ontopbutton    (c),
+            awful.titlebar.widget.minimizebutton (c),
+            awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
@@ -1859,12 +1875,15 @@ awful.spawn.with_shell('xclip')
 awful.spawn.with_shell("xsel --output --primary | xsel --input --clipboard")
 awful.spawn.with_shell("autocutsel -fork")
 awful.spawn.with_shell("nm-applet")
+awful.spawn.with_shell("xfce4-panel")
 --awful.spawn.with_shell("easyeffects --hide-window")
 --awful.spawn.with_shell('syncthing')
 --awful.spawn.with_shell('pactl load-module module-combine-sink sink_name=COMBINED_SINK')
 --awful.spawn.with_shell('flameshot') --bater print
 --awful.spawn.with_shell('cmst -m') --gerenciador de área de transferencia
 --awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
-awful.spawn.with_shell('localsend_app') --localsend
+--awful.spawn.with_shell('localsend_app') --localsend
 --awful.spawn.with_shell('knotes')
 
+
+--require("dock.dock")

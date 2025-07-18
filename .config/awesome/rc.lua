@@ -39,7 +39,6 @@ client.connect_signal("manage", function (c)
     -- Apps específicos que devem ser flutuantes
     local float_instances = {
         gl = true,
-        ["xfce4-panel"] = true,
         PenTablet = true,
         nitrogen = true,
         xpad = true,
@@ -50,6 +49,7 @@ client.connect_signal("manage", function (c)
         pavucontrol = true,
         rhythmbox = true,
         vlc = true,
+        ["xfce4-panel"] = true,
         ["blueman-manager"] = true,
         ["color-picker"] = true,
         iriunwebcam = true,
@@ -646,7 +646,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
   --#### espaço para dock
     s.padding = {
-        bottom = 55,
+        bottom = 50,
     }
 
 
@@ -675,7 +675,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({" 󰖟 -web ","  -code "," 󰽰-music ","  -files ",}, s, awful.layout.layouts[1])
         --awful.tag({"󰫶 󰖟 ","󱂉  ","󱂊 󰽰","󱂋  ",}, s, awful.layout.layouts[1])
         --awful.tag({"󰖟 ","󱨧 "," "," "," ",}, s, awful.layout.layouts[1])
-        awful.tag({" "," "," "," "," "}, s, awful.layout.layouts[1])
+        --awful.tag({" "," "," "," "," "}, s, awful.layout.layouts[1])
+        awful.tag({" ","  ","  ","  ","  "}, s, awful.layout.layouts[1])
         --awful.tag({"    ","    ","    ","    ",}, s, awful.layout.layouts[1])
         --awful.tag({"    ","    ","    ","  󰀻  ",}, s, awful.layout.layouts[1])
 
@@ -696,111 +697,111 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 
         -- Create a taglist widget
-        s.mytaglist = awful.widget.taglist {
-            screen  = s,
-            filter  = awful.widget.taglist.filter.all,
-            buttons = taglist_buttons
-        }
-
-        --#### TAGLISTWIDGETS
-        -- Create a taglist widget
         --s.mytaglist = awful.widget.taglist {
         --    screen  = s,
         --    filter  = awful.widget.taglist.filter.all,
-        --    buttons = taglist_buttons,
-        --    style = {
-        --        shape = gears.shape.rounded_rect,--opcional, para adicionar estilo
-        --    },
-        --    layout  = {
-        --        layout  = wibox.layout.fixed.horizontal,
-        --    },
-        --    widget_template = {
-        --        {
-
-        --            {
-        --                id     = 'text_role',
-        --                widget = wibox.widget.textbox,
-        --            },
-
-        --            {
-        --                id     = 'icon_layout',
-        --                widget = wibox.widget.imagebox,
-        --                layout = wibox.layout.fixed.horizontal, -- Permitir múltiplos ícones
-        --                align  = 'center', -- Centralizar verticalmente
-        --            },
-
-        --            layout = wibox.layout.fixed.horizontal,
-        --            valign = 'center', -- Garante o alinhamento vertical dos ícones
-        --        },
-        --        id     = 'background_role',
-        --        widget = wibox.container.background,
-        --        -- Atualizar os ícones ao selecionar a tag
-        --        create_callback = function(self, t, index, objects)
-        --            local function update_icons()
-        --                local clients = t:clients()
-        --                local icon_layout = self:get_children_by_id('icon_layout')[1]
-
-        --                -- Limpa todos os ícones anteriores
-        --                --icon_layout:reset()
-
-
-        --                ---- Adiciona os ícones de todos os clientes
-        --                --for _, c in ipairs(clients) do
-        --                --    if c.icon then
-        --                --        local icon_widget = wibox.widget {
-        --                --            widget = wibox.widget.imagebox,
-        --                --            image = c.icon,
-        --                --            resize = true,
-        --                --            forced_height = 16,
-        --                --            forced_width = 16,
-        --                --        }
-        --                --        -- Centralizar verticalmente e adicionar margem ao redor de cada ícone
-        --                --        local icon_container = wibox.container.margin(
-        --                --            wibox.container.place(icon_widget, "center"),
-        --                --            0, 0, 0, 0 -- Espaçamento horizontal de 2px entre os ícones
-        --                --        )
-        --                --        icon_layout:add(icon_container)
-        --                --    end
-        --                --end
-        --            end
-
-        --            -- Executa a função de atualização de ícones
-        --            update_icons()
-        --        end,
-        --        update_callback = function(self, t, index, objects)
-        --            local function update_icons()
-        --                local clients = t:clients()
-        --                local icon_layout = self:get_children_by_id('icon_layout')[1]
-
-        --                -- Limpa todos os ícones anteriores
-        --                icon_layout:reset()
-
-        --                -- Adiciona os ícones de todos os clientes
-        --                for _, c in ipairs(clients) do
-        --                    if c.icon then
-        --                        local icon_widget = wibox.widget {
-        --                            widget = wibox.widget.imagebox,
-        --                            image = c.icon,
-        --                            resize = true,
-        --                            forced_height = 16,
-        --                            forced_width = 16,
-        --                        }
-        --                        -- Centralizar verticalmente e adicionar margem ao redor de cada ícone
-        --                        local icon_container = wibox.container.margin(
-        --                            wibox.container.place(icon_widget, "center"),
-        --                            0, 4, 1, 0 -- Espaçamento horizontal de 2px entre os ícones
-        --                        )
-        --                        icon_layout:add(icon_container)
-
-        --                    end
-        --                end
-        --            end
-
-        --            -- executa a função de atualização de ícones
-        --            update_icons()
-        --        end,
-        --    },
+        --    buttons = taglist_buttons
         --}
+
+        --#### TAGLISTWIDGETS
+        -- Create a taglist widget
+        s.mytaglist = awful.widget.taglist {
+            screen  = s,
+            filter  = awful.widget.taglist.filter.all,
+            buttons = taglist_buttons,
+            style = {
+                shape = gears.shape.rounded_rect,--opcional, para adicionar estilo
+            },
+            layout  = {
+                layout  = wibox.layout.fixed.horizontal,
+            },
+            widget_template = {
+                {
+
+                    {
+                        id     = 'text_role',
+                        widget = wibox.widget.textbox,
+                    },
+
+                    {
+                        id     = 'icon_layout',
+                        widget = wibox.widget.imagebox,
+                        layout = wibox.layout.fixed.horizontal, -- Permitir múltiplos ícones
+                        align  = 'center', -- Centralizar verticalmente
+                    },
+
+                    layout = wibox.layout.fixed.horizontal,
+                    valign = 'center', -- Garante o alinhamento vertical dos ícones
+                },
+                id     = 'background_role',
+                widget = wibox.container.background,
+                -- Atualizar os ícones ao selecionar a tag
+                create_callback = function(self, t, index, objects)
+                    local function update_icons()
+                        local clients = t:clients()
+                        local icon_layout = self:get_children_by_id('icon_layout')[1]
+
+                        -- Limpa todos os ícones anteriores
+                        --icon_layout:reset()
+
+
+                        ---- Adiciona os ícones de todos os clientes
+                        for _, c in ipairs(clients) do
+                            if c.icon then
+                                local icon_widget = wibox.widget {
+                                    widget = wibox.widget.imagebox,
+                                    image = c.icon,
+                                    resize = true,
+                                    forced_height = 16,
+                                    forced_width = 16,
+                                }
+                                -- Centralizar verticalmente e adicionar margem ao redor de cada ícone
+                                local icon_container = wibox.container.margin(
+                                    wibox.container.place(icon_widget, "center"),
+                                    0, 0, 0, 0 -- Espaçamento horizontal de 2px entre os ícones
+                                )
+                                icon_layout:add(icon_container)
+                            end
+                        end
+                    end
+
+                    -- Executa a função de atualização de ícones
+                    update_icons()
+                end,
+                update_callback = function(self, t, index, objects)
+                    local function update_icons()
+                        local clients = t:clients()
+                        local icon_layout = self:get_children_by_id('icon_layout')[1]
+
+                        -- Limpa todos os ícones anteriores
+                        icon_layout:reset()
+
+                        -- Adiciona os ícones de todos os clientes
+                        for _, c in ipairs(clients) do
+                            if c.icon then
+                                local icon_widget = wibox.widget {
+                                    widget = wibox.widget.imagebox,
+                                    image = c.icon,
+                                    resize = true,
+                                    forced_height = 16,
+                                    forced_width = 16,
+                                }
+                                -- Centralizar verticalmente e adicionar margem ao redor de cada ícone
+                                local icon_container = wibox.container.margin(
+                                    wibox.container.place(icon_widget, "center"),
+                                    0, 4, 1, 0 -- Espaçamento horizontal de 2px entre os ícones
+                                )
+                                icon_layout:add(icon_container)
+
+                            end
+                        end
+                    end
+
+                    -- executa a função de atualização de ícones
+                    update_icons()
+                end,
+            },
+        }
 
         -- TASLIST STANDARD
         ---- Create a tasklist widget
@@ -1075,11 +1076,18 @@ globalkeys = gears.table.join(
             --{description = "Alternar monitores", group = "custom"}),
     awful.key({ modkey1,            },   "c",    function () awful.spawn("alacritty -e /home/filipe/.config/scripts/qalc-term.sh") end,
              {description = "Rofi-apps", group = "Custom"}),
+
+awful.key({ modkey }, "e", function ()
+    awful.spawn.with_shell("$HOME/.local/bin/rofimoji --selector rofi --action copy")
+end,
+{description = "Selecionar emoji com Rofimoji", group = "launcher"}),
+
+
     awful.key({ "Control",         },   "space",    function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
              {description = "Rofi-apps", group = "Custom"}),
     awful.key({ modkey,        },   "Tab",      function () awful.spawn("rofi -show window ' Exec ' ") end,
             {description = "Rofi-switch-apps", group = "Custom"}),
-    awful.key({ modkey, "Control"  },   "c",      function () awful.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command ' Exec ' ") end,
+    awful.key({ modkey,        },   "c",      function () awful.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command ' Exec ' ") end,
             {description = "Rofi-greenclip", group = "Custom"}),
     awful.key({ modkey         },   "t",      function () awful.spawn("kitty -e htop") end,
             {description = "Open htop", group = "Custom"}),
@@ -1548,20 +1556,21 @@ awful.rules.rules = {
 
 --FIXTAG
   -- Firefox na tag 2 da tela principal
-    {
-        rule = { class = "Google-chrome"},
-        properties = {
-            floating = false,
-            tag = " ",
-            screen = 1,
-            switch_to_tags = true
-        }
-    },
+    --{
+    --    rule = { class = "Google-chrome"},
+    --    properties = {
+    --        floating = false,
+    --        --tag = " ",
+    --        tag = " ",
+    --        screen = 1,
+    --        switch_to_tags = true
+    --    }
+    --},
 
     {
         rule = { class = "kitty"},
         properties = {
-            tag = " ",
+            tag = "  ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1570,7 +1579,7 @@ awful.rules.rules = {
     {
         rule = { class = "Thunar"},
         properties = {
-            tag = " ",
+            tag = "  ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1581,7 +1590,7 @@ awful.rules.rules = {
             class = { "discord", "Nitrogen","obsidian","chromium", }
         },
         properties = {
-            tag = " ",
+            tag = "  ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1592,7 +1601,7 @@ awful.rules.rules = {
             class = { "localsend_app","Localsend_app", }
         },
         properties = {
-            tag = " ",
+            tag = "  ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1838,9 +1847,10 @@ awful.spawn.with_shell('xrandr --rate 100')
 
 
 
- awful.spawn.with_shell('xrandr --output DisplayPort-0 --primary --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
+awful.spawn.with_shell('xrandr --output DisplayPort-0 --primary --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
 
-
+--espelhar/samsung-quarto
+--awful.spawn.with_shell('xrandr --output HDMI-A-0 --mode 2560x1440 --same-as DisplayPort-0')
 
 
 ----------------------------------------------------------------------

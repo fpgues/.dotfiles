@@ -27,6 +27,7 @@ apt pandoc
 apt texlive-xetex texlive-fonts-recommended texlive-plain-generic
 
 ###### .apt
+glmark2 teste d gpus
 ueberzug        # Uma ferramenta para gerenciar imagens de fundo.
 psmisc          # Pacotes utilitários para o sistema operacional.
 gnome-control-center rhythmbox --no-install-recommends

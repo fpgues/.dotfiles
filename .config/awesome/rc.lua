@@ -50,6 +50,7 @@ client.connect_signal("manage", function (c)
         rhythmbox = true,
         vlc = true,
         ["xfce4-panel"] = true,
+        ["VirtualBox Machine"] = true,
         ["blueman-manager"] = true,
         ["color-picker"] = true,
         iriunwebcam = true,
@@ -225,6 +226,10 @@ end)
 --
 --    end)
 --}
+
+
+local temperatura = require("widgets.temperatura") -- ajuste o caminho se necessário
+
 
 
 
@@ -480,11 +485,11 @@ local cputemp_widget = wibox.widget {
 }
 
 -- Registra o widget
-vicious.register(cputemp_widget, vicious.widgets.thermal,
-    function (widget, args)
-        return  " /" .. args[1] .. "°C"
-    end, 5, "thermal_zone0"
-)
+--vicious.register(cputemp_widget, vicious.widgets.thermal,
+--    function (widget, args)
+--        return  " /" .. args[1] .. "°C"
+--    end, 5, "thermal_zone0"
+--)
 
 widget:set_markup("MEM: " .. mem_now.used .."MB32GB")
 -- Cria o widget de texto para a bateria
@@ -519,7 +524,7 @@ mytextclock = wibox.widget.textclock("%a %e %b %H:%M ", 1)
 
 local cw = calendar_widget({
     theme = 'dark', --default ,nord, dark, tokyonight
-    placement = 'top_right', --'top_right', --bottom, bottom_right, center, top_right
+    placement = 'center', --'top_right', --bottom, bottom_right, center, top_right
     start_sunday = false,
     radius = 7,
     -- with customized next/previous (see table above)
@@ -660,7 +665,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({" 1 "," 2 "," 3 "," 4 "," 5 "}, s, awful.layout.layouts[1])
         --awful.tag({"   󰬺","   󰬻","   󰬼","   󰬽","   󰬾","   󰬿"}, s, awful.layout.layouts[1])
         --awful.tag({" 󰬺 "," 󰬻 "," 󰬼 "," 󰬽 "," 󰬾 "," 󰬿 "," 󰭀 "," 󰭁 "}, s, awful.layout.layouts[1])
-        --awful.tag({" www "," Term "," Files "," Other "}, s, awful.layout.layouts[1])
+        awful.tag({" www "," term "," files "," apps "," others "}, s, awful.layout.layouts[1])
         --awful.tag({" 1-Web "," 2-Term "," 3-Files "," 4-Others "}, s, awful.layout.layouts[1])
         --awful.tag({"   www ","   term ","   docs ","   media ", "   [*] "}, s, awful.layout.layouts[1])
         --awful.tag({" www "," * "," cli "," docs "," media "}, s, awful.layout.layouts[1])
@@ -676,7 +681,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
         --awful.tag({"󰫶 󰖟 ","󱂉  ","󱂊 󰽰","󱂋  ",}, s, awful.layout.layouts[1])
         --awful.tag({"󰖟 ","󱨧 "," "," "," ",}, s, awful.layout.layouts[1])
         --awful.tag({" "," "," "," "," "}, s, awful.layout.layouts[1])
-        awful.tag({" ","  ","  ","  ","  "}, s, awful.layout.layouts[1])
+        --awful.tag({" ","   ","   ","   ","   "}, s, awful.layout.layouts[1])
         --awful.tag({"    ","    ","    ","    ",}, s, awful.layout.layouts[1])
         --awful.tag({"    ","    ","    ","  󰀻  ",}, s, awful.layout.layouts[1])
 
@@ -895,7 +900,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     s.mytasklist,
                     sep,
                     --name1,
-                    --cpu1.widget, cpu_hz,
                     --sep,
                     --ram_widget(),
                     --mem1,
@@ -915,18 +919,18 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --s.mytasklist,
                     --s.mytaglist,
 
-                    --mytextclock,
+                    mytextclock,
                 },
 
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
 
-                    systray,
                     --lay_widget,
                     --s.mylayoutbox,
                     sep,
                     cpu_1,
-                    cputemp_widget,
+                    temperatura,
+                    --cputemp_widget,
                     --sep,
                     --cpu_widget(),
                     sep,
@@ -935,7 +939,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --mem_1,
                     sep,
                     fsroothome,
-                    --cpu1.widget, cpu_hz,
+                    sep,
                     --sep,
                     ----ram_widget(),
                     --mem1,
@@ -959,6 +963,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --widget_typeifi_widget,
                     --memwidget,
                     --cpuwidget,
+                    systray,
                     sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     --sep,
@@ -968,8 +973,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --mykeyboardlayout,
                     space,
                     logout_menu_widget(),
-                    sep,
-                    mytextclock,
+                    --sep,
+                    --mytextclock,
                 },
             }
 
@@ -1000,19 +1005,18 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 {   -- Right widgets (apenas relógio)
                     layout = wibox.layout.fixed.horizontal,
 
-
                     fsroothome,
                     sep,sep1,sep,
-                    cpu_1,
+                    cpu_hzu_1,
+                    --temperatura,
                     sep,
                     cpu_widget(),
                     sep,sep1,sep,
                     mem_1,
-
                     sep,sep1,sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
                     sep,
-                                        battery_widget(),
+                    battery_widget(),
                     battery_widget1,
                     --sep1,
                     --mykeyboardlayout,
@@ -1556,21 +1560,23 @@ awful.rules.rules = {
 
 --FIXTAG
   -- Firefox na tag 2 da tela principal
-    --{
-    --    rule = { class = "Google-chrome"},
-    --    properties = {
-    --        floating = false,
-    --        --tag = " ",
-    --        tag = " ",
-    --        screen = 1,
-    --        switch_to_tags = true
-    --    }
-    --},
+    {
+        rule = { class = "Google-chrome"},
+        properties = {
+            floating = false,
+            --tag = " ",
+            tag = " www ",
+            --tag = " ",
+            screen = 1,
+            switch_to_tags = true
+        }
+    },
 
     {
         rule = { class = "kitty"},
         properties = {
-            tag = "  ",
+            --tag = "  ",
+            tag = " term ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1579,7 +1585,8 @@ awful.rules.rules = {
     {
         rule = { class = "Thunar"},
         properties = {
-            tag = "  ",
+            tag = " files ",
+            --tag = "  ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1590,7 +1597,8 @@ awful.rules.rules = {
             class = { "discord", "Nitrogen","obsidian","chromium", }
         },
         properties = {
-            tag = "  ",
+            --tag = "  ",
+            tag = " apps ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1601,7 +1609,8 @@ awful.rules.rules = {
             class = { "localsend_app","Localsend_app", }
         },
         properties = {
-            tag = "  ",
+            tag = " others ",
+            --tag = "  ",
             screen = 1,
             switch_to_tags = true
         }
@@ -1666,9 +1675,9 @@ awful.rules.rules = {
 
     -- barra de títulos #titlebar
     -- Add titlebars to normal clients and dialogs
-    --{ rule_any = {type = { "normal", "dialog" }
-    --  }, properties = { titlebars_enabled = true }
-    --},
+    { rule_any = {type = { "normal", "dialog" }
+      }, properties = { titlebars_enabled = true }
+    },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     { rule = { class = "Firefox" },
@@ -1889,7 +1898,7 @@ awful.spawn.with_shell("xfce4-panel")
 --awful.spawn.with_shell("easyeffects --hide-window")
 --awful.spawn.with_shell('syncthing')
 --awful.spawn.with_shell('pactl load-module module-combine-sink sink_name=COMBINED_SINK')
---awful.spawn.with_shell('flameshot') --bater print
+awful.spawn.with_shell('flameshot') --bater print
 --awful.spawn.with_shell('cmst -m') --gerenciador de área de transferencia
 --awful.spawn.with_shell('xpad -h') -- "-h" -> hide "-s" -> show
 --awful.spawn.with_shell('localsend_app') --localsend

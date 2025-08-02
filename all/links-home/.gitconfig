@@ -1,5 +1,7 @@
 [user]
 	email = 114113408+fpgues@users.noreply.github.com
 	name = fpgues
-[safe]
-	directory = /home/filipe/dot-atuais
+#[safe]
+#	directory = /home/filipe/dot-atuais
+[init]
+	defaultBranch = main

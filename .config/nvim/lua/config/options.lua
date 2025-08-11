@@ -3,6 +3,10 @@
 -- Add any additional options here
 
 --vim.cmd([[ set guicursor= ]])
+-- Configura tabulação com 4 espaços
+vim.opt.tabstop = 4        -- Mostra um tab como 4 espaços
+vim.opt.shiftwidth = 4     -- Número de espaços usados para (auto)indentação
+vim.opt.expandtab = true   -- Usa espaços em vez de tabulações reais
 
 vim.opt.relativenumber = true
 vim.opt.number = true

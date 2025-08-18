@@ -1482,9 +1482,9 @@ awful.rules.rules = {
     
     -- barra de títulos #titlebar
     -- Add titlebars to normal clients and dialogs
-    --{ rule_any = {type = { "normal", "dialog" }
-    --  }, properties = { titlebars_enabled = true }
-    --},
+    { rule_any = {type = { "normal", "dialog" }
+      }, properties = { titlebars_enabled = true }
+    },
 
 
 -- Regra para APPS DE TAMANHO FIXO

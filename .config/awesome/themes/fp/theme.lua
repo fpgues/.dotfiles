@@ -66,9 +66,11 @@ theme.bg_normal  = "#2C2E34" --sonokai
 --theme.bg_focus = "#282c340F"
 --theme.bg_focus = "#ffffff00"
 --theme.bg_focus      = "#535d6c"
-theme.bg_focus      = "#1F2329" --igual kitty
+--theme.bg_focus      = "#1F2329" --igual kitty
 --theme.bg_focus      = "#000000"
 --theme.bg_focus      = "#2b2e3b"
+theme.bg_focus  = "#2C2E34" --sonokai
+
 
 
 theme.bg_urgent = "#ff0000"

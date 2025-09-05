@@ -335,7 +335,8 @@ vicious.register(wifi_widget, vicious.widgets.wifi,
 )
 
 local memwidget = wibox.widget.textbox()
-vicious.register(memwidget, vicious.widgets.mem, "MEM: $1% /32GB", 2)
+vicious.register(memwidget, vicious.widgets.mem, "MEM: $1% /8GB", 2)
+--vicious.register(memwidget, vicious.widgets.mem, "MEM: $1% /32GB", 2)
 
 
 
@@ -354,7 +355,8 @@ vicious.register(mem_widget1, vicious.widgets.mem,
         local used_gb  = string.format("%.1f", args[2] / 1024)
         local total_gb = string.format("%.0f", args[3] / 1024)
         --return "MEM: " .. args[1] .. "% " .. used_gb .. " GB/32GB" .. total_gb .. "GB"
-        return "MEM: " .. args[1] .. "% " .. used_gb .. "GB/32GB"
+        return "MEM: " .. args[1] .. "% " .. used_gb .. "GB/8GB"
+        --return "MEM: " .. args[1] .. "% " .. used_gb .. "GB/32GB"
     end,
 5)
 
@@ -535,10 +537,10 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 
   --#### espaço para dock
-    s.padding = {
-        bottom = 48,
-        --left = 55,
-    }
+  --  sgit@github.com:fpgues/.dotfiles.git.padding = {
+  --      bottom = 48,
+  --      --left = 55,
+  --  }
 
 
 
@@ -776,6 +778,152 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                 layout = wibox.layout.align.horizontal,
                 expand = "none",
 
+
+        --------- >> PC
+        --        {   -- Left widgets
+        --            layout = wibox.layout.fixed.horizontal,
+        --            --s.mylayoutbox,sep,
+        --            s.mylayoutbox,sep,
+        --            --mylauncher,sep3,
+        --            --sep,sep1,sep,
+        --            s.mytaglist,sep,
+        --            s.mytasklist,
+        --            sep,
+        --            --name1,
+        --            --sep,
+        --            --ram_widget(),
+        --            --mem1,
+        --            --sep,
+        --            spotify_widget({
+        --                    --font = "FantasqueSansMNerdFont     Regular 12"
+        --                    --font = "Victor Mono  Bold 10"
+        --                    font = 'ProggyClean CE Nerd Font 12',
+        --                    play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
+        --                    pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg'
+        --            }),
+
+        --        },
+
+        --        {   -- Middle widget
+        --            layout = wibox.layout.flex.horizontal,
+        --            --s.mytasklist,
+        --            --s.mytaglist,
+
+        --            mytextclock,
+        --        },
+
+        --        { -- Right widgets
+        --            layout = wibox.layout.fixed.horizontal,
+
+        --            --lay_widget,
+        --            --s.mylayoutbox,
+        --            sep,
+        --            cpu_1,
+        --            temperatura,
+        --            --cputemp_widget,
+        --            --sep,
+        --            --cpu_widget(),
+        --            sep,
+        --            --memwidget,
+        --            mem_widget1,
+        --            --mem_1,
+        --            sep,
+        --            fsroothome,
+        --            sep,
+        --            --sep,
+        --            ----ram_widget(),
+        --            --mem1,
+        --            --sep,
+        --            --fsroothome,
+        --            --fs_widget(),
+        --            --batteryarc_widget({
+        --            --    show_current_level = true,
+        --            --    arc_thickness = 1,
+        --            --}),
+        --            --sep,
+        --            --brightness_widget(),
+        --            --sep1,
+        --            --todo_widget(),
+        --            --net_speed_widget(),
+        --            --weather,
+        --            --date,
+        --            --sep,
+        ----
+        --            ---VICIOUS WIDGETS
+        --            --widget_typeifi_widget,
+        --            --memwidget,
+        --            --cpuwidget,
+        --            systray,
+        --            sep,
+        --            volume_widget{widget_type = 'icon_and_text'},percent_widget,
+        --            --sep,
+        --            --battery_widget(),
+        --            --battery_widget1,
+        --            --sep1,
+        --            --mykeyboardlayout,
+        --            space,
+        --            logout_menu_widget(),
+        --            --sep,
+        --            --mytextclock,
+        --        },
+        --    }
+
+
+        --    else
+
+        --    -- Configuração do segundo monitor (apenas taglist e relógio)
+        --    s.mywibox:setup {
+        --        layout = wibox.layout.align.horizontal,
+        --        expand = 'none',
+
+        --        {   -- Left widgets (apenas taglist)
+        --            layout = wibox.layout.fixed.horizontal,
+
+        --            --mylauncher,sep3,
+
+        --            s.mylayoutbox,
+        --            sep,
+        --            s.mytaglist,
+        --            --s.mytasklist,
+        --            },
+
+        --        {   -- Middle widget (vazio)
+        --            layout = wibox.layout.flex.horizontal,
+        --            mytextclock,
+        --        },
+
+        --        {   -- Right widgets (apenas relógio)
+        --            layout = wibox.layout.fixed.horizontal,
+
+        --            fsroothome,
+        --            sep,sep1,sep,
+        --            cpu_hzu_1,
+        --            --temperatura,
+        --            sep,
+        --            cpu_widget(),
+        --            sep,sep1,sep,
+        --            mem_1,
+        --            sep,sep1,sep,
+        --            volume_widget{widget_type = 'icon_and_text'},percent_widget,
+        --            sep,
+        --            battery_widget(),
+        --            battery_widget1,
+        --            --sep1,
+        --            --mykeyboardlayout,
+        --            --sep1,
+        --            --mytextclock,
+        --            --sep,
+        --            logout_menu_widget(),
+        --            --sep,
+        --            --mytextclock,
+        --        },
+        --    }
+        --    end
+
+
+        --    end)
+
+        -------- >> NOTEBOOK
                 {   -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
                     --s.mylayoutbox,sep,
@@ -815,7 +963,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     --s.mylayoutbox,
                     sep,
                     cpu_1,
-                    temperatura,
+                    --temperatura,
                     --cputemp_widget,
                     --sep,
                     --cpu_widget(),
@@ -852,15 +1000,14 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     systray,
                     sep,
                     volume_widget{widget_type = 'icon_and_text'},percent_widget,
-                    --sep,
-                    --battery_widget(),
-                    --battery_widget1,
+                    sep,
+
+                    battery_widget(),
+                    battery_widget1,
                     --sep1,
                     --mykeyboardlayout,
                     space,
                     logout_menu_widget(),
-                    --sep,
-                    --mytextclock,
                 },
             }
 
@@ -1482,9 +1629,9 @@ awful.rules.rules = {
     
     -- barra de títulos #titlebar
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
-    },
+    --{ rule_any = {type = { "normal", "dialog" }
+    --  }, properties = { titlebars_enabled = true }
+    --},
 
 
 -- Regra para APPS DE TAMANHO FIXO
@@ -1665,7 +1812,11 @@ awful.spawn.with_shell('xrandr --rate 100')
 
 
 
-awful.spawn.with_shell('xrandr --output DisplayPort-0 --primary --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
+--awful.spawn.with_shell('xrandr --output DisplayPort-0 --primary --mode 2560x1440 --rate 100 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --off --output HDMI-A-0 --off')
+
+
+--notebook-ale+monitor
+awful.spawn.with_shell('xrandr --output eDP --mode 1920x1080 --pos 2560x999 --rotate normal --output HDMI-A-0 --mode 2560x1440 --pos 0x0 --rotate normal')
 
 --espelhar/samsung-quarto
 --awful.spawn.with_shell('xrandr --output HDMI-A-0 --mode 2560x1440 --same-as DisplayPort-0')
@@ -1703,7 +1854,7 @@ awful.spawn.with_shell('xclip')
 awful.spawn.with_shell("xsel --output --primary | xsel --input --clipboard")
 awful.spawn.with_shell("autocutsel -fork")
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("xfce4-panel")
+--awful.spawn.with_shell("xfce4-panel")
 --awful.spawn.with_shell("easyeffects --hide-window")
 --awful.spawn.with_shell('syncthing')
 --awful.spawn.with_shell('pactl load-module module-combine-sink sink_name=COMBINED_SINK')
